@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1F4E78">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="استهلاك المطعم">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogItmI2LHZgtipINin2LPYqtmH2YTYp9mDINin2YTZhdi32LnZhSDYp9mE2YXYr9ix2LPZiiIsICJzaG9ydF9uYW1lIjogItin2LPYqtmH2YTYp9mDINin2YTZhdi32LnZhSIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjBmMmY1IiwgInRoZW1lX2NvbG9yIjogIiMxRjRFNzgiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAiZGlyIjogInJ0bCIsICJsYW5nIjogImFyIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBWUFBQUJTM0d3SEFBQUhvRWxFUVZSNG5PMmNXMjdjT0JCRnE0M3NJOTVQZ0hnNzhRcnM3ZGhBOW1PdkpQUGhvVUhUNnRhTHI2cDd6czlnZ0xoRlNmZXdpcFNnaTAzR3o5OS8vbzBlQTdUai9mWDVNbm9NT1VNSFE5akJiS3dVM1E5TTZPRVd2V1hvZGpDQ0Qzdm9KVUx6Z3hCOE9FTnJFWnI5T01HSG1yUVNvZnFQRW54b1NXMFI3bXIrR09HSDF0VE9XQldiQ0Q2TW9FWTFPRjBCQ0QrTW9rYjJUZ2xBK0dFMFp6TjRXQURDRDdOd0pvdUhCQ0Q4TUJ0SE03bGJBTUlQczNJa203c0VJUHd3TzNzenVsa0F3ZzllMkpQVlRRSVFmdkRHMXN5dUNrRDR3U3Ric2x2MVZRZ0FiOXdVZ05rZnZMT1c0YXNDRUg2SXdxMHMwd0tCTklzQ01QdEROSzVsbWdvQTBud1RnTmtmb3JLVWJTb0FTUE5GQUdaL2lFNlpjU29BU1BNcEFMTS9xSkJublFvQTBpQUFTSE5uUnZzRGVxVE1Vd0ZBR2dRQWFSQUFwRUVBa09iQ0FoaVVvUUtBTkFnQTB2d1lQUUFGM2w2ZUR2L3QvY05qeFpGQUNXdUF5cHdKKzFhUW9oNEljSkllZ1Y4RElZNkRBQWZZRy9vekFlMTVMRVVRWUNOYmc5Z2pnRE9OeFRzSXNNSmEyR1lJbVljeHpnb0NYT0ZXcUdZT2xOZHhqd0lCQ3FJRUtNcDV0QVlCTXE2RnhuTmdJcDVUVFJEQU5FS2ljSTVIa0JkZ0tSaVJRNkYydm12SUNxQWVCUFh6VDBpK0RNZk5YejdmR1o1cTkwYXVBcFEzV1MzNFN5aGZFNmtLb0h5amIxRmVCNlZLRUs0QzVEY3YzVmllbEc1RHNUVU1Yd0dXWnYzb04vVW9TOWNtZWpVSUxVRDBtOWVMeU5jeHRBQlFqNmdTSUFCSUUxNEErdjE2Ukt3Q29RVWcvUFdKSmtFb0FhTGRuRm1KZEozRGZCYkZ3MDE1ZTNuNnUvWGYzajg4L21vNWxyM2NQengrdWNadkwwOGhLbXdZQVdaa1QrRFgvbmFrRUNub3BRUVJDQ0hBVERmbFZ1ajNoTGo4bmZ6L1I4dVFybmVFS3VCZWdCbkNmeTMwWjRKYS9tMStqRmxrK0g4c3JpVndMMERPaUJMZHExWEpmN2VVb2JjRWtWb2gxd0lzdmZqVzhkakRldlIwckRTRzlOOFdZN2gyWGFPMFFtNjNRVWZPUUdVTE1xb05LWTk5WnRGOUZxOFZ3WFVGU1BTYWZXYnF2WFB5aXRDeUdpd2MxMjN3RXk0RnFQSE5tNzNTekJyK25QdUh4MTk1VzlSN25CNWJJYmN0VUtMVHR6aW5EMytpZDB2a0xmQWw3Z1FZdGNzenN0ZmZTejdXM3VzQ2J5MlJPd0Z5V3M4K1BmdnBGdlNTd0hNVmNDVkF6OW5GZS9nVEl5cUJweXJnU29DY2xyUE95TzNFbHJROEw2OVZ3SzBBUGZBKyt5ZWluRWNMM0FqUTY2bHZsTmFucEVjcmxOOFhMMjJRR3dGNkVEWDhpVkU3UXpPREFDQ05Dd0Y2dEQvUlovOUU2eXJnclExeUlVQnJWRnNDMWZQT1FZQ002TE4vUXVVOHQ0QUFJTTMwQXJUdS8xVjYvNUtXYXdGUDY0RHBCUUJvQ1FLQU5OSUNxTFkvQ1I2TWlRc0FNTFVBSTcvNkFPZndzaENlV2dDQTFzZ0tvTjcvSjlUWEFiSUNBSmdoQUlpREFDQU5Bb0EwQ0FEU0lBQklnd0FnRFFLQU5BZ0EwaUFBU0NNcmdQb3JBQW4xVjBKa0JRQXdtMXdBTDYvVXduZTh2TW8rdFFBQXJaRVdRSDBkb043L200a0xBSUFBSU0zMEFyUmVDS3UyUVMzYkh5OExZRE1IQWdDMEJBRXlWS3FBeW5sdUFRRk1keGRFOWJ4elhBalE0NEdZeWxxZzlkYW5wLzdmeklrQUFLMUFnSXpvVllBSFg5OXhJMEN2OTRLaVN0QWovTjdhSHpOSEFvd2dpZ1JSenFNRmJnWG9VUVdpMFd2Mjk0UXJBWHFXMVNpdDBJaSszMHY3WStaTWdKTFdzNDUzQ1hxRjMrdnNiK1pRZ042elN5NkJGeEh5c2ZadTV6ek4vbVlPQlNqcE1mdmtJWnBkZ254OFBjTHZlZlkzY3lyQWlGbkdnd1M5dzEvaWJmWTNNL3N4ZWdBMWVIdDU2bkx4bDlxaEdYYU1SZ1hmKyt4djVyUUNtSTJkYmNwcU1Lb2lsTWNlS2FQSDJkL01lUVc0ZjNqOG5JVjZWWUhzMkY5MmlIcFdoRks0RWNIMytOUjNDZGNDbFBTV3dPd2pmSGtnVzgzSTE2ck02UEI3eDcwQWVSVVlPSWJGQmZLWm1mcFdXelhEdWlQaGVmWTNDeUNBMmRoV2FHRXNWM2VMenF3VlpnbDlsTlluRVVLQWt0RVNKTXJRN2hGZ2xzRG5qSzYwTFFnalFOa0t6U0pCem95aDNrb1ovdG11N1ZIY2JvTXVFZVdtekU2azZ4eEtBRE0rcU51Q2FIMS9UamdCekpDZ0pwSERieFpVQUlDdGhCVWc0bXcxa3FqWE02d0FabkZ2V204aVg4Zkx6OTkvL28wZVJHdVcxZ0dSYitwUkZLK1RoQUNKcUh2Wk5WQzlOcUZib0pMeXBySkQ5SUZxK00zRUtrQkNzZFF2d1hVUXF3Q0pwWnVzVmcwSS93ZVNGU0JITFFocTU3dUd2QUJtMTJmL1NNRlFPTWNqSUVCR3hKQkVQS2VhSUVEQnJiV0FwOUJFT1kvV0lNQVZ2QWJJNjdoSGdRQXJyTzBPelJBcUQyT2NGUVRZeU5adDBoNWhtMmtzM2tHQUEreDlabkFtaUQyUHBRZ0NuR1NHQjJpRS9qZ0lVSmxPWDZ0dWZnd1ZFS0FEWjZRZzdHMUJBSkJHOG1VNGdNVGQrK3Z6WmZRZ0FFYncvdnA4b1FLQU5BZ0EwaUFBU0lNQUlNMmQyY2RpWVBSQUFIcVNNazhGQUdrUUFLVDVGSUEyQ0ZUSXMwNEZBR20rQ0VBVmdPaVVHYWNDZ0RUZkJLQUtRRlNXc2swRkFHa1dCYUFLUURTdVpab0tBTkpjRllBcUFGRzRsZVdiRlFBSndEdHJHYVlGQW1sV0JhQUtnRmUyWkhkVEJVQUM4TWJXekc1dWdaQUF2TEFucTd2V0FFZ0FzN00zbzdzWHdVZ0FzM0lrbTRkMmdaQUFadU5vSmc5dmd5SUJ6TUtaTEo1NkRvQUVNSnF6R1R6OUlBd0pZQlExc2xjMXZIeHBHbnBRYzlLdCtpb0UxUUJhVXp0anpRSkxOWUNhdEpwY204L1lpQUJuYU4xVmRHdFpFQUgyMEt1ZDd0NnpJd0xjb3ZjNmN1aWlGUm5BYk96bXlYUzdOa2dSbTlsMkN2OEQxOFlMWFEzNk9IRUFBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FZQUFBRDBlTlQ2QUFBV3MwbEVRVlI0bk8zZFc1SWJOeElGMEpMQys3RDJvd2hyTzlZS05OdlJSSGcvbXBWNFBoaVUyQzArNmdFVWtKbm5mTTdZTWxrRWNTK3lTdDBmRnFiMDUxOS8venY2TlFDMDhMLy8vdWZENk5mQTczd29nd2g0Z0FzRllRd1gvUVRDSG1BYnBhQS9GN2dEZ1EvUWxrTFFuZ3ZhZ01BSE9KZENjSndMdUpQUUI1aURNckNQaTdhQjBBZVltekt3bmd2MWd0QUhpRWtaZU03RmVVRHdBK1NnQ056bm90d1ErZ0M1S1FPL3VCQ0w0QWVvUmhFb1hnQUVQMEJ0bFl0QXlUY3UrQUc0VmJFSWxIckRnaCtBWnlvVmdSSnZWUEFEc0VXRkl2Qng5QXZvVGZnRHNGV0Y3RWpiY0NwOGVBRDBsM1Vha081TkNYNEFlc2hXQkZMZEFoRCtBUFNTTFdOU3RKbHNId29BYzhzd0RRZy9BUkQrQUp3dFEvYUVMZ0FaUGdBQVlvcWVRU0ZIR05Fdk9nQzVSTHdsRUc0Q0lQd0JtRTNFYkFwVkFDSmVZQUJxaUpaUklVWVcwUzRxQUxWRnVDVXcvUVJBK0FNUVRZVHNtcm9BUkxpQUFIRFA3QmsyYlFHWS9jSUJ3Q3N6WjltVUJXRG1Dd1lBVzh5YWFkTVZnRmt2RkFEc05XTzJUVlVBWnJ4QUFORENiQmszVFFHWTdjSUFRR3N6WmQwVUJXQ21Dd0lBUGMyU2VjTUx3Q3dYQWdET01rUDJEUzBBTTF3QUFCaGhkQVlPS3dDajN6Z0FqRFl5QzRjVUFPRVBBQmVqTXZIMEFpRDhBZUN0RWRsNGFnRVEvZ0J3MzlrWmVWb0JFUDRBOE55WldYbEtBUkQrQUxET1daazUvT2NBQUFEbjYxNEFuUDRCWUpzenNyTnJBUkQrQUxCUDd3enRWZ0NFUHdBYzB6TkxQUU1BQUFWMUtRQk8vd0RRUnE5TWJWNEFoRDhBdE5Valc1c1dBT0VQQUgyMHpsalBBQUJBUWMwS2dOTS9BUFRWTW11YkZBRGhEd0RuYUpXNWJnRUFRRUdIQzREVFB3Q2NxMFgybWdBQVFFR0hDb0RUUHdDTWNUU0RkeGNBNFE4QVl4M0pZcmNBQUtDZ1hRWEE2UjhBNXJBM2swMEFBS0NnelFYQTZSOEE1cklubTAwQUFLQ2dUUVhBNlI4QTVyUTFvMDBBQUtDZzFRWEE2UjhBNXJZbHEwMEFBS0NnVlFYQTZSOEFZbGliMlNZQUFGQ1FBZ0FBQmIwc0FNYi9BQkRMbXV3MkFRQ0FncDRXQUtkL0FJanBWWWFiQUFCQVFRb0FBQlQwc0FBWS93TkFiTSt5M0FRQUFBcFNBQUNnb0xzRndQZ2ZBSEo0bE9rbUFBQlFrQUlBQUFYOVZnQ00vd0VnbDN2WmJnSUFBQVVwQUFCUWtBSUFBQVc5S1FEdS93TkFUdTh6M2dRQUFBcFNBQUNnSUFVQUFBcjZXUURjL3dlQTNHNnozZ1FBQUFwU0FBQ2dJQVVBQUFwU0FBQ2dvSS9MNGdGQUFLamltdmttQUFCUWtBSUFBQVVwQUFCUWtBSUFBQVVwQUFCUWtBSUFBQVVwQUFCUTBBYy9Bd0FBNnZsajlBc0Eydm54L1Z2My84YW5MMSs3L3plQS9rd0FJSWd6d3IwVkpRSG1wd0RBWkNJRi9WYUtBY3hEQVlDQk1vZjlXa29CaktFQXdJa0UvbXNLQVp4REFZQ09CUDV4Q2dIMG9RQkFRd0svUDRVQTJsQUE0Q0NoUDQ0eUFQc3BBTENEMEorUE1nRGJLQUN3a3RDUFF4bUExeFFBZUNGYThQY01QOWNDOGxBQTRJNVpneTVDb0xsMkVJTUNBRGRtQ2ErTVllWGF3bHdVQUZqR2hsUGxRSExkWVJ3RmdMSkdoWS9nZWN4bkF1ZFJBQ2puN0pBUkx2djVyS0FmQllBeXpnd1RRZEtlencvYVVnQkk3NnpnRUJybjhabkNjUW9BcWZVT0NnRXhuczhZOWxFQVNLbG5LQWlFZWZuY1lUMEZnRlFFQU10aUhjQWFDZ0FwOU5yd2JmYnhXUnR3bndKQWVEMDJlSnQ3UHRZSnZLVUFFSllOblQyc0c3aFFBQWpIQms0TDFoSFZLUUNFMG5yVHRtRmpUVkdWQWtBSU5tbDZzOGFvUmdGZ2VpMDNacHN5cjFodlZLRUFNTFZXbTdHTm1LMnNQYkpUQUppU3paZFpXSXRrcFFBd25SWWJyczJXMXF4THN2azQrZ1hBTFpzc3MycXhyczc4bGNid2lna0FVeEQ4UkdLOWtvRUpBTVBaVEluR05JQU1UQUFZNnVnbUtQZ1p6Um9tS2hNQWhyRnhrc0hSZFdnU3dDZ21BSnhPOEpPVnRVMGtKZ0NjeWdaSlpxWUJSS0lBY0JyaFR3VktBRkc0QmNBcGpteHFncCtvckh0bVpnSkFkelpCcWpxeWZrMEM2TTBFZ0lmV2JFQ1BOcmplbTVkaVFDUisxZ1V6TWdFQTZPelRsNjhDbk9rb0FFekZKa2xtMWpjelVRQm9idSs0MCtaSUJYdlh1V2NDYUUwQm9DbmhENjhwQWN4QUFhQVo0US9yS1FHTXBnRFFoUENIN1pRQVJsSUFPRXo0dzM1S0FLTW9BQnhpRTRKeGZQODRRZ0VBQ0V3SllDOEZBQ0E0SllBOUZBQ0FCSlFBdGxJQUFKSlFBdGhDQVFCSVJBbGdMUVVBQUFwU0FBQ1NNUVZnRFFVQUlDRWxnRmNVQUpyekUvNWdEa29BenlnQU5DWDhZUzVLQUk4b0FEUWovQUhpVUFDNGErdXBRZmpEdkV3QnVPZVAwUytBK1FqL0hINTgvL1pQcXovcjA1ZXZuMXY5V1l6eDQvczMzMVhlVUFCNHcwa2hscFlodi9lL294eU04ZW5MMTgzZlZ5V0FXd29BaDloTXpuTlcyRzkxNzNVcEJlZllVd0xnU2dIZ0p4dkpmR1lOL1ZkdVg3Y3kwTmZXRW1BS3dKVUN3TElzd244V1VRUC9tZmZ2U1NGb1R3bGdEd1VBNFQ5WXh0Qi94blRndUJiaHJRU2dBTUFndllPL1piajJlcTNYUDFjUk9NN3pBR3lsQUJSbnd6aFhqeUE5SXp3Zi9UZGF2UjlUZ1RiY0NtQUxCYUF3NFgrZVZrRTVXemplZXoxSDM2dXB3SE92QWxzSllDMEZBRG82R29ZUlEvRDlhOTU3RFJRQjZFc0JLTXJwdjY4andaOHQ4RzdmejU3cm9naHNad3JBR2dvQU5MUTMrS3VFMjVFeW9BaHM0NkZBWGxFQUNySXB0Q2Y0dDd1K2QwVmd2WjZuZEZPQWVoU0FZb1IvZTFzRHJHSndQYk4zS3ZEais3ZC9YTXZuM0FyZ0dRVUFkaEw4N1cyZENsU2VCcXpsVmdDUGZCejlBamlQVGFDZExlSC82Y3ZYendKcW02M1hyTUpQVXp6clpHNmZxTU1FZ0x1Y0d1N2JHdnc5WDBzRld5WUNwZ0dQK1Q1emp3bEFFVnUrL080QjNpZjh4ekVOT0c3TDkxcFpxRUVCZ0JYV2hvcHhmejlicnEwU0FLKzVCVkNBMC85K1c0Sy85MnZoWXUxdEFiY0VmcmZsVm9DL0VaQ2ZBcERja1ZIZXFDLy9MSnVPOEovYnB5OWZQNjk5TnNCbnRJOFNrSnRiQVB6a2kvN0xtbUF4N2g5djdXZmdsc0F2dnVkY0tRQ0plWkJubjdYaGY4WnJZUjBsb0IvN1NGNEtBTXV5T0JVc3l5VWdoSDljYTB1QUl1RDd6b1VDa0pUV3ZvMlJmdzV1Q2ZSaFA4bEpBYUQ4YWNDcFB4OGw0TFhxMzNzVWdKUzA5ZldFZjE1S1FGdjJsWHdVZ09JcW53S0VmMzVLd0hPVnYvOG9BQlFsL090UUF1QStCU0FaUC9YdnRWZWJ2WWY5OGxuem1WWXRBWDVIUUYwS0FLV3NDZit6WGd2blV3TGdGd1VnRWFmL1k0Ui9EVDduMzVrQzFLUUFVTWF6MDUxUXFPWFo1MjBLUUJVS1FCSk8vOC9aMU5taTRub3hCYWhIQVNBOTkvMjV4L01BVktjQUZGUHQ5Qy84ZVVZSmVLdmEvbENkQXBDQWNkdyt3cDlsc1E3MnN1L0Vwd0NRbG9mK1dNdERnVlNrQUFUbjRiLzdoRDliS1FFWEhnYXNRd0VnblVxYk5lZXhyc2hHQVNpaTB1bi9HYWQvbnJFK0x1d1hOU2dBZ1JtLy9jN29uNlBjQ3RqR1BoU1hBa0Fhd3A5V2xBQXFVQUFLTU00RHRySnY1S2NBQkdYczlwYlRQNjJaQXF4blA0cEpBU0E4NFU4dlNnQ1pLUURKR2VNQmU5ay9jbE1BQWpKdSs4WHBuOTVNQWRheEw4V2pBQUJBUVFwQVl0bkhkMDcvbktYeUZDRDdQbEtaQWtBNndwOGVyQ3V5VVFDQ2NaL3RJdnVwaTFpc3h3djdVeXdLUUZKVngzWk9hZlJVZFgxVjNVK3lVd0FJeDJtTEdWbVhSS01Ba0ViVjB4bm5zczdJUWdFSXhQMDFweXptWm4zYXB5SlJBQktxZUwvT3FZd3pWVnh2RmZlVjdCUUFBQ2hJQVNBTTQxVWlzRTZKUWdFSXduMjF4eXFPWXhuUHVudk1maFdEQXBCTTF2dDBUbFZFa25XOVp0MWZxbElBQ00wcGpKR3NQeUpUQUFDZ0lBV0E2V1VkcDVLYmRjdnNGSUFBUEZCem4vRXJNN0FPNzdOdnpVOEJTTVFET2tCdjlwazhGQUFBS0VnQllHcVA3cU1hdXpLVFIrdlJjd0RNVEFFQWdJSVVBQUFvU0FHWVhPVW5hWTFQeWFEeU9xNjhmMFdnQUNSUjZjbGM5LytaVWFWMVdXbS95VXdCQUlDQ0ZBQUFLRWdCQUlDQ0ZBQ21WUG5CS2ZLeG5wbVJBa0FvbFI2MEloN3JrMGdVQUFBb1NBRUFnSUlVZ0luNUlScEFkUGF4ZVNrQUNmaWhITURaN0R2eEtRQUFVSkFDd0hUOENtQWk4NnVCaVVJQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQkFJQ0NGQUFBS0VnQllEcWZ2bno5Zk85Ly8vSDkyejludnhiWTZ0RTZmYlN1WVJRRkFBQUtVZ0FTK1BIOTIraVhBQlJqMzRsUEFaallweTlmUjc4RWdFUHNZL05TQUFDZ0lBVUFBQXBTQUFqRjN3UmdadFlua1NnQVRNbGZtU0lUNjVrWktRQUFVSkFDQUFBRktRQUFVSkFDa0VTbEg4cmhRU3RtVkdsZFZ0cHZNbE1BSmxmNWgyaDRjSW9NS3Evanl2dFhCQW9BQUJTa0FBQkFRUW9BVS9PcmdZbkFyd0FtSWdVQUFBcFNBQkx4WkM3UW0zMG1Ed1VnQUUvUzN1YzJBRE93RHUremI4MVBBV0I2N3FNU2tYWEw3QlFBQUNoSUFTQTA0MWRHc3Y2SVRBRklKdXNET3NhcFJKSjF2V2JkWDZwU0FJTHdRTTFqVG1HTVlOMDlacitLUVFFZ2pLeW5Lbkt4VG9sQ0FRQ0FnaFNBaENyZXB6T081VXdWMTF2RmZTVTdCU0FROTlXTVY1bWI5V21maWtRQklJMktwekxPWjUyUmhRSkFPRTVaek1pNkpCb0ZJS21xOSt1Y3p1aXA2dnFxdXA5a3B3QUU0LzdhaGRNV003RWVMK3hQc1NnQXBGUDFsRVpmMWhYWktBQ0paUi9iUFR0MTJheHA2ZGw2eW43Nno3NlBWS1lBQUVCQkNrQkE3clA5WWdwQWI1VlAvMXZZbCtKUkFKSXp2Z1Ayc24va3BnQVFuaWtBdlRqOWs1a0NFSlJ4MjF0S0FLMEovL1hzUnpFcEFBVVk0d0ZiMlRmeVV3Qkl3eFNBVnB6K3FVQUJDTXpZN1hkS0FFY0ovMjNzUTNFcEFFVVk1MTBvQVR4amZWellMMnBRQUVqSEtZMGVyQ3V5VVFDQzJ6SitxOVRxM1FwZ0s2UC9peTM3aFBGL2JBb0FhU2tCckNYOHFVZ0JTRUFMMzBjSllGbXNnNzNzTy9FcEFNVlV1ZzJ3TEs5UGJ6Yi8ybDU5L3RWTy85WDJoK29VQU5KVEFyaEgrRk9kQXBDRWh3R2ZzNW16UmNYMTR1Ry9laFFBeXZCUUlGY2UrZ01GSUJWVGdHT1VnQnA4enI5eitxOUpBYUFVendQVTVyNC8vS0lBSkdNSzhOcWFFcUFJNUxMbU02MGEvazcvZFNrQWxMUm1zMWNDY2xqek9WWU5mMnBUQUlxck9nVllGaVdnQXVIL1hPWHZQd3BBU3NaMDZ5a0JlUW4vdHV3citTZ0FsRDhGS0FINUNQL1hxbi92VVFEUzB0YTNXVnNDRklHNXJmMk1xb2YvVnZhVG5CUUFsbVZ4R2xpV1N5aVlCc1MxTnZpRnYrODdGd3BBWWxyN1BrcEFQRTc5L2RoSDhsSUErTW1wNEJlM0JHSXc4dC9POTV3ckJTQTU3WDIvdGFHaEJJeXg5cm9MLy8zc0g3bjlNZm9GME4rbkwxOVh0LzRmMzcvNTB0KzRoc2Vyc0xuKy84S21QOEcvbjUvNnh5MFRBRmhoeXpUQVJLQ1BMZGRXK01OckNrQVJma2ZBY1Z0Q1JRbG9hOHYxRlA3M09mM3pubHNBM09WV3dIMXJid25jL2pNQ2FUL0IzNFpTenowbUFJVUk5SGEyVGdOTUJMYlplczJFZnp2MmlUcE1BSGpJRk9DNUxkT0EyMzlPV0QyMnRTaTVscTg1L2ZPSUFsRE1scjhSc0N4S3dCcWZ2bno5dkNXNGJ2OVpBYmIvZVFuWDdyV3Q0ZSs3WG9zQ1VORFdFc0JyVzZjQlY1V25Bb0ovTHNLL0hnV0FsMHdCMWp0YUJHNy9qSXlPUEF1UiticjBvT1R6aWdKUWxGc0JmZTB0QXUvL25ReWhkL1FCeUF6WDRHeEcvNnloQUVCSFI0ckF2WDh2UWhpMitoc1BFZDRyUktZQUZHWUtjSjZqUmVEcTNyOC9NaWg3L1BWR3dYK00wejlyS1FERktRSG51ZzIzVnVINTZNOXBHYVM5ZjQ2QjBHOUQrTE9GQXNCbVNrQWJyYVlDajBUNDRVT0N2eDBQL2JHVkFvQy9GamhZajZuQXpJVCtISlI0RkFDV1pYRXJZQmJ2d3pGRElSRDQvUm45czRjQ3dFOUt3SHlpVGdlRS9ubUVQM3NwQUJ5aUJKem5YcWpPVUFxRS9UaHUzWEdFQXNBYm5nZUk1Vm40dGl3SFFqNEhaWjFiQ2dDL2NTc2dCNkdkbTlFL1IzMGMvUUtZMDliTnd0UUF6aVA4YVVFQm9Ca2xBUHJ6UGFNVkJZQ0g5cHdhYkU3UXo1N3ZsOU0vanlnQVBLVUV3QnlFUDYwcEFMeGtFNEY0Zkc5NVJRRmdGWnNKeE9IN3lob0tBQUFVcEFDd21sTUZ6TS8zbExVVUFEYXh1Y0M4ZkQvWlFnRmdNNXNNek1mM2txMFVBSGF4MmNBOGZCL1pRd0ZnTjVzT2pPZDd5RjRLQUlmWWZHQWMzeitPVUFBNGJPOG01Q2NHd3Y3dmdmRG5LQVdBSnBRQTJFNzRNNUlDUUROS0FLd24vQmxOQWFBcEpRQmVFLzdNUUFHZ09TVUFIaFArekVJQllDcEtBSmxaMzh6a2o5RXZBTjY3YnBKT1BHUWgrSm5SaHovLyt2dmYwUytDM0k1c2Zrb0EwVm4vek1vdEFMbzdzb2s1T1JHWjhHZG1KZ0NjNW1pWTJ4Q0p3bG9uQWhNQVRuTjBVek1OSUFMaFR4UUtBS2RTQXNoTStCT0pXd0FNWTdNa0MydVppRXdBR01ZMGdBeUVQMUdaQURCY2l5QzNpWEkyNjVib1RBQVlyc1VtYUJyQW1ZUS9HWmdBTUJVYkt6T3pQc25FQklDcG1BWXdLK0ZQTmlZQVRLbFZpTnR3T2NwYUpDc0ZnS25aZkJuRjJpTTdCWURwdFJ6cDI0eDV4WHFqQ2dXQUVGcmYxN2N4ODU0MVJqVUtBS0hZcEduTm1xSXFCWUJ3ZWp6bGI5T3V4enFpT2dXQXNHemc3R0hkd0lVQ1FIZzJkTmF3VHVBdEJZQVVldjN3SHh0OGZOWUczS2NBa0VyUG53Sm93NC9ET29EWEZBQlNFZ0ExK2R4aFBRV0ExSHIvWGdDaE1KN1BHUFpSQUVqdnJGOE9KQ2pPNHpPRjR4UUF5amp6dHdRS2p2WjhmdENXQWtBNVovKzZZR0d5bjg4SytsRUFLT3ZzY0xrU01vLzVUT0E4Q2dBczQ0Sm5XV3FIaitzTzR5Z0FjR05rSU4zS0dFNnVMY3hGQVlBN1pnbXI5eUtFbDJzSE1TZ0E4TUtzZ2ZaSXo2QnpMU0FQQlFCV2loWitsUWwrZUUwQmdCMlVnZmtJZmRoR0FZQ0RsSUZ4aEQ3c3B3QkFROHBBZjBJZjJsQUFvQ09GNERpQkQzMG9BSEFpaGVBMWdRL25VQUJnSUlWQTRNTW9DZ0JNSm5NcEVQWXdEd1VBZ29oVURBUTl6RThCZ0VUT0tBbkNIWEw0c0N6TG9nUUFRQjMvKys5L1Bud2MvU0lBZ1BNcEFBQlFrQUlBQUFVcEFBQlFrQUlBQUFVcEFBQlFrQUlBQUFWOVhKYkwzd2NjL1VJQWdQNnVtVzhDQUFBRktRQUFVSkFDQUFBRktRQUFVTkRQQXVCQlFBREk3VGJyVFFBQW9DQUZBQUFLVWdBQW9LQTNCY0J6QUFDUTAvdU1Od0VBZ0lJVUFBQW9TQUVBZ0lKK0t3Q2VBd0NBWE81bHV3a0FBQlNrQUFCQVFYY0xnTnNBQUpERG8wdzNBUUNBZ2hRQUFDam9ZUUZ3R3dBQVludVc1U1lBQUZDUUFnQUFCVDB0QUc0REFFQk1yekxjQkFBQUNucFpBRXdCQUNDV05kbHRBZ0FBQlNrQUFGRFFxZ0xnTmdBQXhMQTJzMDBBQUtDZzFRWEFGQUFBNXJZbHEwMEFBS0NnVFFYQUZBQUE1clExbzAwQUFLQ2d6UVhBRkFBQTVySW5tMDBBQUtDZ1hRWEFGQUFBNXJBM2swMEFBS0NnM1FYQUZBQUF4anFTeFljbUFFb0FBSXh4TklQZEFnQ0FnZzRYQUZNQUFEaFhpK3cxQVFDQWdwb1VBRk1BQURoSHE4eHROZ0ZRQWdDZ3I1Wlo2eFlBQUJUVXRBQ1lBZ0JBSDYwenR2a0VRQWtBZ0xaNlpHdVhXd0JLQUFDMDBTdFRQUU1BQUFWMUt3Q21BQUJ3VE04czdUb0JVQUlBWUovZUdkcjlGb0FTQUFEYm5KR2RuZ0VBZ0lKT0tRQ21BQUN3emxtWmVkb0VRQWtBZ09mT3pNcFRid0VvQVFCdzM5a1plZm96QUVvQUFMdzFJaHVIUEFTb0JBREF4YWhNSFBhM0FKUUFBS29ibVlWRC94cWdFZ0JBVmFNemNQalBBUmg5QVFEZ2JETmszL0FDc0N4elhBZ0FPTU1zbVRkRkFWaVdlUzRJQVBReVU5Wk5Vd0NXWmE0TEF3QXR6Wlp4VXhXQVpabnZBZ0hBVVRObTIzUUZZRm5tdkZBQXNNZXNtVFpsQVZpV2VTOFlBS3cxYzVaTld3Q1daZTRMQndEUHpKNWhVeGVBWlpuL0FnTEFleEd5YS9vWGVPdlB2LzcrZC9SckFJQkhJZ1QvMWZRVGdGdVJMaXdBdFVUTHFGQUZZRm5pWFdBQThvdVlUZUZlOEMyM0JBQVlLV0x3WDRXYkFOeUtmT0VCaUMxNkJvVXVBTXNTL3dNQUlKNE0yUlArRGR4eVN3Q0FuaklFLzFYNENjQ3RUQjhNQUhQSmxqR3Azc3d0MHdBQVdzZ1cvRmNwMzlRdFJRQ0FQYklHLzFXcVd3RDNaUDhBQVdpdlFuYWtmNE8zVEFNQWVLWkM4RitWZWFPM0ZBRUFibFVLL3F0eWIvaVdJZ0JRVzhYZ3Z5cjd4bThwQWdDMVZBNytxL0lYNEpZaUFKQ2I0UC9GaFhoQUdRRElRZWpmNTZLOG9BZ0F4Q1Q0bjNOeE5sQUdBT1ltOU5kem9YWlNCZ0RtSVBUM2NkRWFVQVlBemlYMGozTUJPMUFJQU5vUytPMjVvQ2RRQ0FDMkVmajl1Y0NES0FVQUY4SitEQmQ5VWdvQ2tJV0FuOVAvQVpGc2dHYkhYVGJIQUFBQUFFbEZUa1N1UW1DQyIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dLCAic2NvcGUiOiAiLi8ifQ==">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<title>ورقة استهلاك المطعم المدرسي</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color:transparent; -webkit-user-select:none; user-select:none; }
+input, select, textarea { -webkit-user-select:text; user-select:text; }
+html, body { overscroll-behavior:none; height:100%; }
+body { background:#f0f2f5; color:#222; padding-bottom:calc(70px + env(safe-area-inset-bottom)); overflow-x:hidden; }
+header { background:#1F4E78; color:#fff; padding:14px 14px calc(14px + env(safe-area-inset-top)) 14px; text-align:center; font-size:1.05em; font-weight:bold; position:sticky; top:0; z-index:10; box-shadow:0 2px 5px rgba(0,0,0,.2); }
+nav { display:flex; background:#fff; position:fixed; bottom:0; width:100%; padding-bottom:env(safe-area-inset-bottom); box-shadow:0 -2px 8px rgba(0,0,0,.12); z-index:10; }
+nav button { flex:1; padding:12px 2px; border:none; background:none; font-size:.78em; color:#666; cursor:pointer; font-weight:bold; touch-action:manipulation; }
+nav button.active { color:#1F4E78; border-top:3px solid #1F4E78; }
+.tab { display:none; padding:12px; }
+.tab.active { display:block; }
+.card { background:#fff; border-radius:12px; padding:14px; margin-bottom:12px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+label { display:block; font-size:.85em; margin-bottom:4px; color:#555; font-weight:bold; }
+input, select, textarea { width:100%; padding:11px; border:1.5px solid #ddd; border-radius:9px; font-size:1em; margin-bottom:10px; font-family:inherit; }
+input:focus, textarea:focus { border-color:#1F4E78; outline:none; }
+.btn { background:#1F4E78; color:#fff; border:none; padding:13px; border-radius:10px; width:100%; font-size:1.05em; font-weight:bold; cursor:pointer; }
+.btn.sec { background:#e9eef5; color:#1F4E78; }
+.btn.danger { background:#c0392b; }
+table { width:100%; border-collapse:collapse; font-size:.8em; background:#fff; border-radius:10px; overflow:hidden; }
+th { background:#1F4E78; color:#fff; padding:8px 4px; font-size:.75em; }
+td { padding:8px 4px; border-bottom:1px solid #eee; text-align:center; }
+tr.low td { background:#fdecea; color:#c0392b; }
+.total-bar { background:#1F4E78; color:#fff; padding:12px; border-radius:12px; text-align:center; font-weight:bold; margin-bottom:12px; }
+.row-flex { display:flex; gap:8px; } .row-flex > * { flex:1; }
+h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
+.empty { text-align:center; color:#999; padding:22px; }
+.small { font-size:.8em; color:#888; }
+.scroll { overflow-x:auto; }
+.meal-box { border:2px solid #1F4E78; border-radius:12px; padding:12px; margin-top:12px; background:#f7fafd; }
+.meal-box h3 { text-align:center; border-bottom:1.5px dashed #1F4E78; padding-bottom:8px; }
+.sup-card { border:1.5px solid #1F4E78; border-radius:12px; padding:12px; margin-bottom:12px; background:#fff; }
+.sup-card h3 { border-bottom:1px dashed #1F4E78; padding-bottom:6px; }
+.sup-card p { font-size:.88em; margin:3px 0; }
+.badge { display:inline-block; background:#e9eef5; color:#1F4E78; border-radius:20px; padding:2px 10px; font-size:.75em; font-weight:bold; margin:2px; }
+.sign-area { display:none; }
+@media print {
+  body { background:#fff; padding-bottom:0; }
+  nav, header button, .card, .empty, .btn, td button { display:none !important; }
+  header { position:static; color:#000; box-shadow:none; border-bottom:2px solid #000; }
+  .tab { display:none !important; }
+  #tab-day { display:block !important; padding:0; }
+  #tab-month { display:block !important; padding:0; }
+  #tab-month::before { content:''; display:none; }
+  .y-head p, .y-head h2 { color:#000 !important; }
+  #tab-month input { border:none; background:none; margin:0; padding:0 4px; font-weight:bold; display:inline-block; width:auto; }
+  #tab-day::before { content:'ورقة استهلاك المطعم المدرسي'; display:block; font-weight:bold; font-size:1.2em; text-align:center; margin-bottom:10px; }
+  .total-bar { background:#eee; color:#000; border:1.5px solid #000; }
+  table, th, td { border:1px solid #000; }
+  th { background:#ddd !important; color:#000 !important; }
+  tr.low td { background:#fff; color:#000; }
+  .meal-box { border:1.5px solid #000; background:#fff; }
+  .meal-box h3 { color:#000; }
+  .sign-area { display:flex !important; justify-content:space-between; margin-top:50px; page-break-inside:avoid; }
+  .sign-area .sig { text-align:center; width:38%; font-weight:bold; font-size:1.05em; }
+  .sign-area .line { border-top:1.5px solid #000; margin-top:45px; }
+}
+
+#printSheet { display:none; }
+.ps-top { display:flex; justify-content:space-between; font-weight:bold; font-size:.95em; }
+.ps-title { text-align:center; margin:14px 0; font-size:1.2em; text-decoration:underline; }
+.ps-tbl { width:100%; border-collapse:collapse; margin-bottom:14px; }
+.ps-tbl th, .ps-tbl td { border:1.5px solid #000; padding:7px 6px; text-align:center; font-size:.95em; }
+.ps-tbl th { background:#eee; }
+.ps-side { border-collapse:collapse; margin-bottom:14px; width:280px; }
+.ps-side td { border:1.5px solid #000; padding:6px 10px; font-weight:bold; font-size:.9em; }
+.ps-sec { font-weight:bold; margin:10px 0 6px; text-decoration:underline; }
+.ps-meal, .ps-att { width:100%; border-collapse:collapse; margin-bottom:14px; }
+.ps-meal th, .ps-meal td, .ps-att th, .ps-att td { border:1.5px solid #000; padding:7px 6px; text-align:center; font-size:.93em; }
+.ps-meal th, .ps-att th { background:#eee; }
+.ps-meal td { min-height:60px; vertical-align:top; }
+.ps-sign { display:flex; justify-content:space-between; margin-top:55px; }
+.ps-sign .sig { text-align:center; width:38%; font-weight:bold; font-size:1.05em; }
+.ps-sign .line { border-top:1.5px solid #000; margin-top:45px; }
+@media print {
+  body { background:#fff; padding-bottom:0; }
+  body.print-day .tab, body.print-day nav, body.print-day header { display:none !important; }
+  body.print-day #printSheet { display:block !important; padding:0; }
+  .tab.print-active { display:block !important; padding:0; }
+}
+</style>
+</head>
+<body>
+<header>🍽️ ورقة استهلاك المطعم المدرسي
+<button onclick="window.print()" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:#fff;color:#1F4E78;border:none;border-radius:8px;padding:6px 10px;font-size:1.1em;cursor:pointer">🖨️</button>
+</header>
+
+<!-- ═══ تبويب اليوم ═══ -->
+<div class="tab active" id="tab-day">
+  <div class="card">
+    <div class="row-flex">
+      <div><label>التاريخ</label><input type="date" id="dDate"></div>
+      <div><label>المؤسسة</label><input type="text" id="dSchool" placeholder="ثانوية ..."></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>➕ تسجيل مادة</h3>
+    <label>المكوّن (السعر = المرجعي تلقائياً)</label>
+    <select id="dItem"></select>
+    <div class="row-flex">
+      <div><label>المتوفر بداية اليوم</label><input type="number" id="dAvail" min="0" placeholder="0"></div>
+      <div><label>المدخول (شراء)</label><input type="number" id="dIn" min="0" placeholder="0"></div>
+    </div>
+    <div class="row-flex">
+      <div><label>المستهلَك (المخرجات)</label><input type="number" id="dOut" min="0" placeholder="0"></div>
+      <div><label>الملاحظات</label><input type="text" id="dNote" placeholder="اختياري"></div>
+    </div>
+    <button class="btn" onclick="addEntry()">💾 حفظ السطر</button>
+  </div>
+
+  <div class="total-bar" id="dayTotal">مجموع الاستهلاك: 0 دج</div>
+  <div class="scroll"><table id="dayTable"><thead><tr>
+    <th>المكوّن</th><th>الوحدة</th><th>المتوفر</th><th>المدخول</th><th>المجموع</th><th>المخرجات</th><th>الباقي</th><th>السعر المرجعي</th><th>المبلغ</th><th></th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="empty small" id="dayEmpty">لا توجد حركات لهذا اليوم</p>
+
+  <div class="meal-box">
+    <h3>🍲 الوجبة المقدّمة</h3>
+    <div class="row-flex">
+      <div><label>الغداء</label><input type="text" id="mLunch" placeholder="مثال: لوبيا + جبن"></div>
+      <div><label>العشاء</label><input type="text" id="mDinner" placeholder="مثال: شخشوخة"></div>
+    </div>
+    <h3>👥 الحاضرون</h3>
+    <div class="row-flex">
+      <div><label>تلاميذ</label><input type="number" id="mStu" min="0" placeholder="0"></div>
+      <div><label>مساعدين</label><input type="number" id="mHelp" min="0" placeholder="0"></div>
+      <div><label>أساتذة</label><input type="number" id="mTeach" min="0" placeholder="0"></div>
+      <div><label>ضيوف</label><input type="number" id="mGuest" min="0" placeholder="0"></div>
+    </div>
+    <p class="small" id="mInfo"></p>
+    <button class="btn sec" onclick="saveMeta()">💾 حفظ بيانات الورقة</button>
+  </div>
+
+  <br><button class="btn sec" onclick="window.print()">🖨️ طباعة الورقة</button>
+
+  <div class="sign-area">
+    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
+    <div class="sig"><p>المدير</p><p class="line"></p></div>
+  </div>
+</div>
+
+<!-- ═══ تبويب المواد ═══ -->
+<div class="tab" id="tab-items">
+  <div class="card">
+    <h3 id="itemFormTitle">➕ إضافة / تعديل مادة</h3>
+    <input type="hidden" id="iEdit">
+    <label>اسم المادة</label>
+    <input type="text" id="iName" placeholder="مثال: لحم بقري هبرة">
+    <div class="row-flex">
+      <div><label>الفئة</label><input type="text" id="iCat" placeholder="لحوم حمراء / خضر وفواكه"></div>
+      <div><label>الوحدة</label><input type="text" id="iUnit" placeholder="كغ / ربطة"></div>
+      <div><label>الممون</label><select id="iSup"></select></div>
+    </div>
+    <div class="row-flex">
+      <div><label>السعر الأدنى (دج)</label><input type="number" id="iPmin" min="0" placeholder="0"></div>
+      <div><label>السعر المرجعي (دج)</label><input type="number" id="iPref" min="0" placeholder="0"></div>
+      <div><label>السعر الأقصى (دج)</label><input type="number" id="iPmax" min="0" placeholder="0"></div>
+    </div>
+    <div class="row-flex">
+      <div><label>الحد الأدنى للمخزون</label><input type="number" id="iMin" min="0" placeholder="0"></div>
+    </div>
+    <button class="btn" onclick="saveItem()">💾 حفظ المادة</button>
+    <button class="btn sec" onclick="clearItemForm()" style="margin-top:8px">↩️ إلغاء التعديل</button>
+  </div>
+  <div class="card">
+    <h3>📦 قائمة المواد والأسعار</h3>
+    <div class="scroll"><table id="itemTable"><thead><tr>
+      <th>الرقم</th><th>المادة</th><th>الفئة</th><th>الوحدة</th><th>أدنى</th><th>مرجعي</th><th>أقصى</th><th>الممون</th><th></th>
+    </tr></thead><tbody></tbody></table></div>
+    <p class="empty small" id="itemEmpty">لا توجد مواد</p>
+  </div>
+</div>
+
+<!-- ═══ تبويب الممونون ═══ -->
+<div class="tab" id="tab-sup">
+  <div class="card">
+    <h3 id="supFormTitle">➕ إضافة / تعديل ممون</h3>
+    <input type="hidden" id="sEdit">
+    <label>اسم الممون (التعاونية/الشركة)</label>
+    <input type="text" id="sName" placeholder="مثال: التعاونية الفلاحية بالتحرش">
+    <div class="row-flex">
+      <div><label>المسير / المدير</label><input type="text" id="sMgr"></div>
+      <div><label>العنوان</label><input type="text" id="sAddr"></div>
+    </div>
+    <div class="row-flex">
+      <div><label>رقم السجل التجاري</label><input type="text" id="sRC"></div>
+      <div><label>الرقم الجبائي (NIF)</label><input type="text" id="sNIF"></div>
+    </div>
+    <div class="row-flex">
+      <div><label>الحساب البنكي (RIB)</label><input type="text" id="sRIB"></div>
+      <div><label>الهاتف</label><input type="text" id="sPhone"></div>
+    </div>
+    <label>ملاحظات (رقم المادة الجبائية، البنك...)</label>
+    <input type="text" id="sNote">
+    <button class="btn" onclick="saveSup()">💾 حفظ الممون</button>
+    <button class="btn sec" onclick="clearSupForm()" style="margin-top:8px">↩️ إلغاء التعديل</button>
+  </div>
+  <div id="supList"></div>
+</div>
+
+<!-- ═══ تبويب المدخولات ═══ -->
+<div class="tab" id="tab-in">
+  <div class="card">
+    <h3>📥 حساب المدخولات لكل مادة</h3>
+    <table id="inTable"><thead><tr><th>المادة</th><th>إجمالي المدخول</th><th>الوحدة</th><th>المرجعي</th><th>القيمة</th></tr></thead><tbody></tbody></table>
+    <p class="empty small" id="inEmpty">لا توجد مدخولات بعد</p>
+    <div class="total-bar" id="inTotal" style="margin-top:10px">مجموع قيمة المدخولات: 0 دج</div>
+  </div>
+  <div class="card">
+    <h3>📋 تفصيل المدخولات اليومية</h3>
+    <table id="inDetail"><thead><tr><th>التاريخ</th><th>المادة</th><th>الكمية</th><th>القيمة</th></tr></thead><tbody></tbody></table>
+    <p class="empty small" id="inDetailEmpty">لا يوجد تفصيل</p>
+  </div>
+</div>
+
+<!-- ═══ تبويب السجل ═══ -->
+<div class="tab" id="tab-history">
+  <div class="card">
+    <h3>📅 ملخص الاستهلاك الشهري</h3>
+    <table id="monthTable"><thead><tr><th>الشهر</th><th>أيام</th><th>الاستهلاك (دج)</th><th>المتوسط اليومي</th></tr></thead><tbody></tbody></table>
+    <p class="empty small" id="monthEmpty">لا يوجد سجل</p>
+  </div>
+  <div class="card">
+    <h3>⚙️ البيانات</h3>
+    <button class="btn sec" onclick="exportCSV()">⬇️ تصدير السجل (CSV)</button><br><br>
+    <button class="btn danger" onclick="wipeAll()">🗑️ مسح جميع البيانات</button>
+    <p class="small" style="margin-top:8px">البيانات محفوظة على هذا الجهاز فقط.</p>
+  </div>
+</div>
+
+
+<!-- ═══ تبويب البيان الشهري ═══ -->
+<div class="tab" id="tab-month">
+  <div class="card y-head" style="text-align:center">
+    <h3>📄 بيان الاستهلاك الشهري — المطعم المدرسي</h3>
+    <p style="margin:6px 0">الموسم الدراسي: <input type="text" id="ySeason" placeholder="مثال: 2025/2026" style="width:120px;display:inline-block"> —
+    المؤسسة: <input type="text" id="ySchool" placeholder="ثانوية ..." style="width:170px;display:inline-block"></p>
+    <p style="margin:6px 0">الشهر: <input type="month" id="yMonth" style="width:150px;display:inline-block"></p>
+    <button class="btn sec" onclick="renderMonthStatement()" style="width:auto;padding:10px 20px">🔄 تحديث البيان</button>
+  </div>
+  <div class="total-bar" id="yTotal">إجمالي الاستهلاك الشهري: 0 دج</div>
+  <div class="scroll"><table id="yTable"><thead><tr>
+    <th>الرقم</th><th>المادة</th><th>الوحدة</th><th>الرصيد الافتتاحي</th><th>المدخول</th><th>المخرجات</th><th>الرصيد الختامي</th><th>سعر الوحدة</th><th>المبلغ (دج)</th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="empty small" id="yEmpty">لا توجد حركات في هذا الشهر</p>
+  <br><button class="btn sec" onclick="window.print()">🖨️ طباعة البيان</button>
+  <div class="sign-area">
+    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
+    <div class="sig"><p>المدير</p><p class="line"></p></div>
+  </div>
+</div>
+
+<nav>
+  <button class="active" onclick="showTab('day',this)">📝 اليوم</button>
+  <button onclick="showTab('items',this)">📦 المواد</button>
+  <button onclick="showTab('sup',this)">🚚 الممونون</button>
+  <button onclick="showTab('in',this)">📥 المدخولات</button>
+  <button onclick="showTab('month',this)">📄 البيان</button>
+  <button onclick="showTab('history',this)">📊 السجل</button>
+</nav>
+
+<script>
+const K='v3_';
+let items  = JSON.parse(localStorage.getItem(K+'items')||'null');
+let entries= JSON.parse(localStorage.getItem(K+'entries')||'[]');
+let sups   = JSON.parse(localStorage.getItem(K+'sups')||'null');
+let meta   = JSON.parse(localStorage.getItem(K+'meta')||'{}');
+
+/* ── بيانات أولية من عروض الأسعار (قابلة للتعديل) ── */
+if(!sups){
+  sups=[
+   {name:'التعاونية الفلاحية بالتحرش للتموين المدرسي', mgr:'', addr:'',
+    rc:'36/00-15108819+', nif:'299443488153239', rib:'0015500012667/72', phone:'06629477141',
+    note:'الممون المعتمد للحوم الحمراء والبيضاء — رقم المادة الجبائية 51'},
+   {name:'التعاونية الفلاحية عين قدير (بعين ولد)', mgr:'محمد الطاهر', addr:'بعين ولد - العيون',
+    rc:'', nif:'', rib:'', phone:'06629477141',
+    note:'الممون المعتمد للخضر والفواكه — نسخة مُرسلة إلى نيابة التربية'}
+  ];
+}
+if(!items){
+  const L=sups[0].name, V=sups[1].name;
+  items=[
+   {name:'لحم بقري هبرة',cat:'لحوم حمراء',unit:'كغ',pmin:1800,pref:2600,pmax:2600,min:0,sup:L},
+   {name:'لحم خروف',cat:'لحوم حمراء',unit:'كغ',pmin:2000,pref:2800,pmax:2800,min:0,sup:L},
+   {name:'لحم بقري بالعظم',cat:'لحوم حمراء',unit:'كغ',pmin:1400,pref:2000,pmax:2000,min:0,sup:L},
+   {name:'لحم الدجاج',cat:'دجاج',unit:'كغ',pmin:250,pref:500,pmax:550,min:0,sup:L},
+   {name:'سكالوب داند',cat:'لحوم بيضاء',unit:'كغ',pmin:800,pref:1200,pmax:1200,min:0,sup:L},
+   {name:'سكالوب دجاج',cat:'لحوم بيضاء',unit:'كغ',pmin:600,pref:1100,pmax:1100,min:0,sup:L},
+   {name:'بصل',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:80,pmax:80,min:0,sup:V},
+   {name:'ثوم',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:400,pmax:400,min:0,sup:V},
+   {name:'موز (بنان)',cat:'خضر وفواكه',unit:'كغ',pmin:250,pref:450,pmax:450,min:0,sup:V},
+   {name:'عنب أصفر',cat:'خضر وفواكه',unit:'كغ',pmin:150,pref:250,pmax:250,min:0,sup:V},
+   {name:'عنب أحمر',cat:'خضر وفواكه',unit:'كغ',pmin:150,pref:250,pmax:250,min:0,sup:V},
+   {name:'تفاح أصفر',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:400,pmax:400,min:0,sup:V},
+   {name:'تفاح أحمر',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:400,pmax:400,min:0,sup:V},
+   {name:'برتقال طومسون',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:250,pmax:250,min:0,sup:V},
+   {name:'برتقال مندرين',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:250,pmax:250,min:0,sup:V},
+   {name:'سلطة خضراء',cat:'خضر وفواكه',unit:'كغ',pmin:70,pref:150,pmax:150,min:0,sup:V},
+   {name:'خيار',cat:'خضر وفواكه',unit:'كغ',pmin:50,pref:150,pmax:150,min:0,sup:V},
+   {name:'طماطم حب حمراء',cat:'خضر وفواكه',unit:'كغ',pmin:50,pref:150,pmax:150,min:0,sup:V},
+   {name:'جزر',cat:'خضر وفواكه',unit:'كغ',pmin:70,pref:120,pmax:120,min:0,sup:V},
+   {name:'بطاطا',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:90,pmax:90,min:0,sup:V},
+   {name:'فلفل حلو',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:120,pmax:120,min:0,sup:V},
+   {name:'فلفل حار',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:120,pmax:120,min:0,sup:V},
+   {name:'جلبانة خضراء',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:200,pmax:200,min:0,sup:V},
+   {name:'لوبيا خضراء',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:200,pmax:200,min:0,sup:V},
+   {name:'باذنجان',cat:'خضر وفواكه',unit:'كغ',pmin:30,pref:50,pmax:50,min:0,sup:V},
+   {name:'الكرنب',cat:'خضر وفواكه',unit:'كغ',pmin:30,pref:80,pmax:80,min:0,sup:V},
+   {name:'إجاص',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:350,pmax:350,min:0,sup:V},
+   {name:'ملفوف أحمر',cat:'خضر وفواكه',unit:'كغ',pmin:300,pref:450,pmax:450,min:0,sup:V},
+   {name:'دلاح',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:60,pmax:60,min:0,sup:V},
+   {name:'بطيخ',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:80,pmax:80,min:0,sup:V},
+   {name:'شمندر عادي',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:350,pmax:350,min:0,sup:V},
+   {name:'خوخ (بمطيفة)',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:350,pmax:350,min:0,sup:V},
+   {name:'خوخ (بمقاش)',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:350,pmax:350,min:0,sup:V},
+   {name:'فراولة',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:300,pmax:300,min:0,sup:V},
+   {name:'ليمون',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:200,pmax:200,min:0,sup:V},
+   {name:'مشمش',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:400,pmax:400,min:0,sup:V}
+  ];
+}
+const save = ()=>{ localStorage.setItem(K+'items',JSON.stringify(items));
+  localStorage.setItem(K+'entries',JSON.stringify(entries));
+  localStorage.setItem(K+'sups',JSON.stringify(sups));
+  localStorage.setItem(K+'meta',JSON.stringify(meta)); };
+const fmt = n => (+n).toLocaleString('ar-DZ');
+
+function showTab(t,btn){
+  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(e=>e.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active'); btn.classList.add('active');
+  if(t==='in') renderInputs();
+  if(t==='sup') renderSups();
+}
+
+/* ── الممونون ── */
+function saveSup(){
+  const n=sName.value.trim(); if(!n) return alert('أدخل اسم الممون');
+  const d={name:n, mgr:sMgr.value.trim(), addr:sAddr.value.trim(), rc:sRC.value.trim(),
+           nif:sNIF.value.trim(), rib:sRIB.value.trim(), phone:sPhone.value.trim(), note:sNote.value.trim()};
+  if(sEdit.value!=='') sups[+sEdit.value]=d; else sups.push(d);
+  clearSupForm(); save(); renderSups(); renderSupSelect();
+}
+function editSup(i){ const s=sups[i]; sEdit.value=i; sName.value=s.name; sMgr.value=s.mgr; sAddr.value=s.addr;
+  sRC.value=s.rc; sNIF.value=s.nif; sRIB.value=s.rib; sPhone.value=s.phone; sNote.value=s.note;
+  supFormTitle.textContent='✏️ تعديل ممون'; window.scrollTo(0,0); }
+function delSup(i){ if(confirm('حذف الممون؟ (لن تُحذف المواد المرتبطة به)')){ sups.splice(i,1); save(); renderSups(); renderSupSelect(); } }
+function clearSupForm(){ sEdit.value=''; ['sName','sMgr','sAddr','sRC','sNIF','sRIB','sPhone','sNote'].forEach(id=>document.getElementById(id).value='');
+  supFormTitle.textContent='➕ إضافة / تعديل ممون'; }
+function renderSups(){
+  supList.innerHTML = sups.map((s,i)=>`<div class="sup-card">
+    <h3>🚚 ${s.name} <span style="float:left"><button onclick="editSup(${i})" style="border:none;background:none">✏️</button>
+    <button onclick="delSup(${i})" style="border:none;background:none;color:#c0392b">✖</button></span></h3>
+    ${s.mgr?`<p><b>المسير:</b> ${s.mgr}</p>`:''}
+    ${s.addr?`<p><b>العنوان:</b> ${s.addr}</p>`:''}
+    ${s.rc?`<p><b>رقم السجل التجاري:</b> ${s.rc}</p>`:''}
+    ${s.nif?`<p><b>الرقم الجبائي:</b> ${s.nif}</p>`:''}
+    ${s.rib?`<p><b>الحساب البنكي:</b> ${s.rib}</p>`:''}
+    ${s.phone?`<p><b>الهاتف:</b> ${s.phone}</p>`:''}
+    ${s.note?`<p class="small">📝 ${s.note}</p>`:''}
+    <p>${items.filter(it=>it.sup===s.name).map(it=>`<span class="badge">${it.name}</span>`).join('')}</p>
+  </div>`).join('') || '<p class="empty">لا يوجد ممونون</p>';
+}
+function renderSupSelect(){ iSup.innerHTML = sups.map((s,i)=>`<option value="${s.name}">${s.name}</option>`).join(''); }
+
+/* ── المواد ── */
+function saveItem(){
+  const n=iName.value.trim(); if(!n) return alert('أدخل اسم المادة');
+  const d={name:n, cat:iCat.value.trim()||'عام', unit:iUnit.value.trim()||'كغ',
+    pmin:+iPmin.value||0, pref:+iPref.value||0, pmax:+iPmax.value||0,
+    min:+iMin.value||0, sup:iSup.value};
+  if(iEdit.value!=='') items[+iEdit.value]=d; else items.push(d);
+  clearItemForm(); save(); renderItems(); renderSelect(); renderInputs();
+}
+function editItem(i){ const it=items[i]; iEdit.value=i; iName.value=it.name; iCat.value=it.cat; iUnit.value=it.unit;
+  iPmin.value=it.pmin; iPref.value=it.pref; iPmax.value=it.pmax; iMin.value=it.min; iSup.value=it.sup;
+  itemFormTitle.textContent='✏️ تعديل مادة'; window.scrollTo(0,0); }
+function delItem(i){ if(confirm('حذف المادة؟')){ items.splice(i,1); save(); renderItems(); renderSelect(); renderInputs(); } }
+function clearItemForm(){ iEdit.value=''; ['iName','iCat','iUnit','iPmin','iPref','iPmax','iMin'].forEach(id=>document.getElementById(id).value='');
+  itemFormTitle.textContent='➕ إضافة / تعديل مادة'; }
+function renderSelect(){ dItem.innerHTML = items.map((it,i)=>`<option value="${i}">${it.name} (${it.unit}) — ${fmt(it.pref)} دج</option>`).join(''); }
+function renderItems(){
+  itemTable.querySelector('tbody').innerHTML = items.map((it,i)=>
+    `<tr><td>${i+1}</td><td style="text-align:right">${it.name}</td><td>${it.cat}</td><td>${it.unit}</td>
+     <td>${fmt(it.pmin)}</td><td><b>${fmt(it.pref)}</b></td><td>${fmt(it.pmax)}</td>
+     <td style="font-size:.7em">${it.sup||'—'}</td>
+     <td><button onclick="editItem(${i})" style="border:none;background:none">✏️</button>
+     <button onclick="delItem(${i})" style="border:none;background:none;color:#c0392b">✖</button></td></tr>`).join('');
+  itemEmpty.style.display = items.length?'none':'block';
+}
+
+/* ── حركات اليوم ── */
+function addEntry(){
+  const it=items[dItem.value]; if(!it) return alert('أضف مادة أولاً');
+  const d=dDate.value; if(!d) return alert('اختر التاريخ');
+  entries.push({date:d, item:it.name, unit:it.unit, avail:+dAvail.value||0, inq:+dIn.value||0,
+                out:+dOut.value||0, price:it.pref, note:dNote.value.trim()});
+  dAvail.value=dIn.value=dOut.value=dNote.value=''; save(); renderDay(); renderMonths(); renderInputs();
+}
+function delEntry(i){ if(confirm('حذف هذا السطر؟')){ entries.splice(i,1); save(); renderDay(); renderMonths(); renderInputs(); } }
+function findMin(name){ const it=items.find(x=>x.name===name); return it?it.min:0; }
+function renderDay(){
+  const d=dDate.value;
+  const rows = entries.map((e,i)=>({e,i})).filter(x=>x.e.date===d);
+  dayTable.querySelector('tbody').innerHTML = rows.map(({e,i})=>{
+    const tot=e.avail+e.inq, rem=tot-e.out;
+    return `<tr class="${rem<=findMin(e.item)?'low':''}">
+     <td style="text-align:right">${e.item}</td><td>${e.unit}</td><td>${e.avail}</td><td>${e.inq}</td><td>${tot}</td>
+     <td>${e.out}</td><td>${rem}</td><td>${fmt(e.price)}</td><td>${fmt(e.out*e.price)}</td>
+     <td><button onclick="delEntry(${i})" style="border:none;background:none;color:#c0392b">✖</button></td></tr>`;
+  }).join('');
+  dayTotal.textContent = 'مجموع الاستهلاك: ' + fmt(rows.reduce((s,x)=>s+x.e.out*x.e.price,0)) + ' دج';
+  dayEmpty.style.display = rows.length?'none':'block';
+  const m = meta[d]||{};
+  mLunch.value=m.lunch||''; mDinner.value=m.dinner||'';
+  mStu.value=m.stu||''; mHelp.value=m.help||''; mTeach.value=m.teach||''; mGuest.value=m.guest||'';
+  dSchool.value=(meta._settings&&meta._settings.school)||'';
+  updateMealInfo();
+}
+function dayCount(){ return (+mStu.value||0)+(+mHelp.value||0)+(+mTeach.value||0)+(+mGuest.value||0); }
+function dayTotalOut(){
+  const d=dDate.value; let t=0;
+  entries.filter(e=>e.date===d).forEach(e=>t+=e.out*e.price);
+  return t;
+}
+function saveMeta(){
+  const d=dDate.value; if(!d) return alert('اختر التاريخ');
+  meta[d]={lunch:mLunch.value.trim(), dinner:mDinner.value.trim(),
+           stu:+mStu.value||0, help:+mHelp.value||0, teach:+mTeach.value||0, guest:+mGuest.value||0};
+  if(!meta._settings) meta._settings={};
+  meta._settings.school=dSchool.value.trim();
+  save(); updateMealInfo(); alert('✅ تم حفظ بيانات الورقة');
+}
+function updateMealInfo(){
+  const c=dayCount(), t=dayTotalOut();
+  mInfo.textContent = c ? `👥 عدد الحاضرين: ${c} — الكلفة الإجمالية: ${fmt(t)} دج — الكلفة الفردية: ${(Math.round(t/c*100)/100).toLocaleString('ar-DZ')} دج` : (t?`الكلفة الإجمالية: ${fmt(t)} دج`:'');
+}
+
+/* ── المدخولات ── */
+function renderInputs(){
+  const agg={};
+  entries.forEach(e=>{ if(e.inq>0){ (agg[e.item]=agg[e.item]||{q:0,v:0,unit:e.unit,price:e.price}); agg[e.item].q+=e.inq; agg[e.item].v+=e.inq*e.price; }});
+  const ks=Object.keys(agg).sort();
+  inTable.querySelector('tbody').innerHTML = ks.map(k=>
+    `<tr><td style="text-align:right">${k}</td><td>${agg[k].q}</td><td>${agg[k].unit}</td><td>${fmt(agg[k].price)}</td><td>${fmt(agg[k].v)}</td></tr>`).join('');
+  inEmpty.style.display = ks.length?'none':'block';
+  inTotal.textContent = 'مجموع قيمة المدخولات: ' + fmt(ks.reduce((s,k)=>s+agg[k].v,0)) + ' دج';
+  const det = entries.map((e,i)=>({e,i})).filter(x=>x.e.inq>0).sort((a,b)=>a.e.date<b.e.date?1:-1);
+  inDetail.querySelector('tbody').innerHTML = det.map(({e})=>
+    `<tr><td>${e.date}</td><td style="text-align:right">${e.item}</td><td>${e.inq}</td><td>${fmt(e.inq*e.price)}</td></tr>`).join('');
+  inDetailEmpty.style.display = det.length?'none':'block';
+}
+
+/* ── السجل ── */
+function renderMonths(){
+  const m={};
+  entries.forEach(e=>{ const k=e.date.slice(0,7); (m[k]=m[k]||{days:new Set(),tot:0}); m[k].days.add(e.date); m[k].tot+=e.out*e.price; });
+  const ks=Object.keys(m).sort().reverse();
+  monthTable.querySelector('tbody').innerHTML = ks.map(k=>
+    `<tr><td>${k}</td><td>${m[k].days.size}</td><td>${fmt(m[k].tot)}</td><td>${fmt(m[k].tot/m[k].days.size)}</td></tr>`).join('');
+  monthEmpty.style.display = ks.length?'none':'block';
+}
+
+
+/* ── البيان الشهري ── */
+function renderMonthStatement(){
+  const m = yMonth.value;
+  const rows = entries.filter(e=>e.date.slice(0,7)===m).sort((a,b)=>a.date<b.date?-1:1);
+  const agg = {};
+  rows.forEach(e=>{
+    if(!agg[e.item]) agg[e.item] = {unit:e.unit, open:e.avail, inq:0, out:0, close:e.avail+e.inq-e.out, price:e.price};
+    const a = agg[e.item];
+    a.inq += e.inq; a.out += e.out; a.close = e.avail + a.inq - a.out; a.price = e.price;
+  });
+  const ks = Object.keys(agg);
+  yTable.querySelector('tbody').innerHTML = ks.map((k,i)=>{
+    const a = agg[k];
+    return `<tr><td>${i+1}</td><td style="text-align:right">${k}</td><td>${a.unit}</td>
+      <td>${a.open}</td><td>${a.inq}</td><td>${a.out}</td><td>${a.close}</td>
+      <td>${fmt(a.price)}</td><td>${fmt(a.out*a.price)}</td></tr>`;
+  }).join('');
+  yTotal.textContent = 'إجمالي الاستهلاك الشهري: ' + fmt(ks.reduce((s,k)=>s+agg[k].out*agg[k].price,0)) + ' دج';
+  yEmpty.style.display = ks.length?'none':'block';
+}
+function saveYearSettings(){ meta._settings = {season:ySeason.value, school:ySchool.value}; save(); }
+
+/* ── تصدير ── */
+function exportCSV(){
+  let csv='\ufeffالتاريخ;المادة;الوحدة;المتوفر;المدخول;المخرجات;الباقي;السعر المرجعي;قيمة الاستهلاك;الوجبة المقررة;داخلي;نصف داخلي;سعر الوجبة\n';
+  entries.forEach(e=>{ const mt=meta[e.date]||{};
+    csv+=`${e.date};${e.item};${e.unit};${e.avail};${e.inq};${e.out};${e.avail+e.inq-e.out};${e.price};${e.out*e.price};${mt.meal||''};${mt.board||''};${mt.half||''};${mt.price||''}\n`; });
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download='سجل_استهلاك_المطعم.csv'; a.click();
+}
+function wipeAll(){ if(confirm('سيتم مسح كل البيانات نهائياً! متأكد؟')){ items=[]; entries=[]; sups=[]; meta={}; save(); renderAll(); } }
+function renderAll(){ renderItems(); renderSelect(); renderSups(); renderSupSelect(); renderDay(); renderMonths(); renderInputs(); }
+
+function buildPrintSheet(){
+  const d=dDate.value, m=meta[d]||{};
+  psSchool.textContent = (meta._settings&&meta._settings.school)||'ثانوية ................';
+  psDate.textContent = d;
+  const agg={};
+  entries.filter(e=>e.date===d).forEach(e=>{
+    if(!agg[e.item]) agg[e.item]={out:0,price:e.price};
+    agg[e.item].out+=e.out; agg[e.item].price=e.price;
+  });
+  let tot=0, rowsHtml='';
+  items.forEach(it=>{
+    const a=agg[it.name], out=a?a.out:0, pr=a?a.price:it.pref, amt=out*pr; tot+=amt;
+    rowsHtml+='<tr><td style="text-align:right">'+it.name+'</td><td>'+(out||'')+'</td><td>'+(pr?fmt(pr):'')+'</td><td>'+(amt?fmt(amt):'')+'</td></tr>';
+  });
+  rowsHtml+='<tr><td style="text-align:right;font-weight:bold">المجمـــــــــــــــــــــــــــــــــــــــــــوع</td><td></td><td></td><td style="font-weight:bold">'+fmt(tot)+'</td></tr>';
+  psRows.innerHTML=rowsHtml;
+  psTot2.textContent=fmt(tot);
+  const c=dayCount();
+  psCount.textContent=c||'';
+  psAvg.textContent=c?(Math.round(tot/c*100)/100).toLocaleString('ar-DZ'):'';
+  psLunch.textContent=m.lunch||''; psDinner.textContent=m.dinner||'';
+  psStu.textContent=m.stu||''; psHelp.textContent=m.help||''; psTeach.textContent=m.teach||''; psGuest.textContent=m.guest||'';
+  psSum.textContent=c||'';
+}
+window.addEventListener('beforeprint', ()=>{
+  const act = document.querySelector('.tab.active');
+  document.body.classList.remove('print-day');
+  if(act && act.id==='tab-day'){ buildPrintSheet(); document.body.classList.add('print-day'); }
+  else if(act) act.classList.add('print-active');
+});
+window.addEventListener('afterprint', ()=>{
+  document.querySelectorAll('.print-active').forEach(e=>e.classList.remove('print-active'));
+});
+dDate.value = new Date().toISOString().slice(0,10);
+dDate.onchange = renderDay;
+yMonth.value = dDate.value.slice(0,7);
+const _st = meta._settings||{};
+ySeason.value = _st.season||''; ySchool.value = _st.school||'';
+ySeason.onchange = saveYearSettings; ySchool.onchange = saveYearSettings;
+const _origShowTab = showTab;
+showTab = function(t,btn){ _origShowTab(t,btn); if(t==='month') renderMonthStatement(); };
+['mLunch','mDinner','mStu','mHelp','mTeach','mGuest','dSchool'].forEach(id=>{
+  document.getElementById(id).oninput=updateMealInfo; });
+const _origRenderDay = renderDay;
+renderDay = function(){ _origRenderDay(); updateMealInfo(); };
+renderAll();
+</script>
+<div id="printSheet">
+  <div class="ps-top">
+    <div>الجمهورية الجزائرية الديمقراطية الشعبية<br>وزارة التربية الوطنية</div>
+    <div style="text-align:left">مديرية التربية لولاية الطارف<br><b id="psSchool">ثانوية ................</b></div>
+  </div>
+  <h2 class="ps-title">ورقة الاستهلاك ليوم: <span id="psDate"></span></h2>
+  <table class="ps-tbl">
+    <thead><tr><th>التعيين</th><th>مخرجات اليوم</th><th>السعر</th><th>المبلغ</th></tr></thead>
+    <tbody id="psRows"></tbody>
+  </table>
+  <table class="ps-side">
+    <tr><td>الكلفة الإجمالية</td><td id="psTot2"></td></tr>
+    <tr><td>عدد الحاضرين</td><td id="psCount"></td></tr>
+    <tr><td>الكلفة الفردية</td><td id="psAvg"></td></tr>
+  </table>
+  <p class="ps-sec">عدد الحاضرين</p>
+  <table class="ps-meal">
+    <thead><tr><th>عشاء</th><th>غداء</th><th>الوجبة المقدّمة</th></tr></thead>
+    <tbody><tr><td id="psDinner"></td><td id="psLunch"></td><td></td></tr></tbody>
+  </table>
+  <table class="ps-att">
+    <thead><tr><th>العدد</th><th>الوظيفة</th><th>الاسم واللقب</th></tr></thead>
+    <tbody>
+      <tr><td id="psStu"></td><td>تلاميذ</td><td></td></tr>
+      <tr><td id="psHelp"></td><td>مساعدين</td><td></td></tr>
+      <tr><td id="psTeach"></td><td>أساتذة</td><td></td></tr>
+      <tr><td id="psGuest"></td><td>ضيوف</td><td></td></tr>
+      <tr><td id="psSum"></td><td>المجموع</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="ps-sign">
+    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
+    <div class="sig"><p>المدير</p><p class="line"></p></div>
+  </div>
+</div>
+</body>
+</html>
