@@ -590,5 +590,12 @@ renderAll();
     <div class="sig"><p>المدير</p><p class="line"></p></div>
   </div>
 </div>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>
