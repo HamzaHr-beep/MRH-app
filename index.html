@@ -18,22 +18,24 @@ input, select, textarea { -webkit-user-select:text; user-select:text; }
 html, body { overscroll-behavior:none; height:100%; }
 body { background:#f0f2f5; color:#222; padding-bottom:calc(70px + env(safe-area-inset-bottom)); overflow-x:hidden; }
 header { background:#1F4E78; color:#fff; padding:14px 14px calc(14px + env(safe-area-inset-top)) 14px; text-align:center; font-size:1.05em; font-weight:bold; position:sticky; top:0; z-index:10; box-shadow:0 2px 5px rgba(0,0,0,.2); }
-nav { display:flex; background:#fff; position:fixed; bottom:0; width:100%; padding-bottom:env(safe-area-inset-bottom); box-shadow:0 -2px 8px rgba(0,0,0,.12); z-index:10; }
-nav button { flex:1; padding:12px 2px; border:none; background:none; font-size:.78em; color:#666; cursor:pointer; font-weight:bold; touch-action:manipulation; }
+nav { display:flex; background:#fff; position:fixed; bottom:0; width:100%; padding-bottom:env(safe-area-inset-bottom); box-shadow:0 -2px 8px rgba(0,0,0,.12); z-index:10; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+nav button { flex:1 0 auto; min-width:60px; padding:10px 2px; border:none; background:none; font-size:.72em; color:#666; cursor:pointer; font-weight:bold; touch-action:manipulation; white-space:nowrap; }
 nav button.active { color:#1F4E78; border-top:3px solid #1F4E78; }
 .tab { display:none; padding:12px; }
 .tab.active { display:block; }
 .card { background:#fff; border-radius:12px; padding:14px; margin-bottom:12px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
 label { display:block; font-size:.85em; margin-bottom:4px; color:#555; font-weight:bold; }
 input, select, textarea { width:100%; padding:11px; border:1.5px solid #ddd; border-radius:9px; font-size:1em; margin-bottom:10px; font-family:inherit; }
-input:focus, textarea:focus { border-color:#1F4E78; outline:none; }
+input:focus, textarea:focus, select:focus { border-color:#1F4E78; outline:none; }
 .btn { background:#1F4E78; color:#fff; border:none; padding:13px; border-radius:10px; width:100%; font-size:1.05em; font-weight:bold; cursor:pointer; }
 .btn.sec { background:#e9eef5; color:#1F4E78; }
 .btn.danger { background:#c0392b; }
-table { width:100%; border-collapse:collapse; font-size:.8em; background:#fff; border-radius:10px; overflow:hidden; }
-th { background:#1F4E78; color:#fff; padding:8px 4px; font-size:.75em; }
-td { padding:8px 4px; border-bottom:1px solid #eee; text-align:center; }
+.btn.warn { background:#e67e22; }
+table { width:100%; border-collapse:collapse; font-size:.78em; background:#fff; border-radius:10px; overflow:hidden; }
+th { background:#1F4E78; color:#fff; padding:7px 3px; font-size:.72em; }
+td { padding:7px 3px; border-bottom:1px solid #eee; text-align:center; }
 tr.low td { background:#fdecea; color:#c0392b; }
+tr.expwarn td { background:#fff6e0; color:#a05a00; }
 .total-bar { background:#1F4E78; color:#fff; padding:12px; border-radius:12px; text-align:center; font-weight:bold; margin-bottom:12px; }
 .row-flex { display:flex; gap:8px; } .row-flex > * { flex:1; }
 h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
@@ -42,26 +44,28 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
 .scroll { overflow-x:auto; }
 .meal-box { border:2px solid #1F4E78; border-radius:12px; padding:12px; margin-top:12px; background:#f7fafd; }
 .meal-box h3 { text-align:center; border-bottom:1.5px dashed #1F4E78; padding-bottom:8px; }
-.sup-card { border:1.5px solid #1F4E78; border-radius:12px; padding:12px; margin-bottom:12px; background:#fff; }
-.sup-card h3 { border-bottom:1px dashed #1F4E78; padding-bottom:6px; }
-.sup-card p { font-size:.88em; margin:3px 0; }
+.sup-card, .grp-card { border:1.5px solid #1F4E78; border-radius:12px; padding:12px; margin-bottom:12px; background:#fff; }
+.sup-card h3, .grp-card h3 { border-bottom:1px dashed #1F4E78; padding-bottom:6px; }
+.sup-card p, .grp-card p { font-size:.88em; margin:3px 0; }
 .badge { display:inline-block; background:#e9eef5; color:#1F4E78; border-radius:20px; padding:2px 10px; font-size:.75em; font-weight:bold; margin:2px; }
+.badge-warn { display:inline-block; background:#fbe4c8; color:#a05a00; border-radius:20px; padding:2px 10px; font-size:.75em; font-weight:bold; margin:2px; }
+.wk-row { display:flex; gap:6px; align-items:center; margin-bottom:6px; }
+.wk-row .wk-day { width:60px; font-size:.78em; font-weight:bold; color:#1F4E78; flex-shrink:0; }
+.wk-row input { margin-bottom:0; padding:8px; font-size:.85em; }
 .sign-area { display:none; }
 @media print {
   body { background:#fff; padding-bottom:0; }
   nav, header button, .card, .empty, .btn, td button { display:none !important; }
   header { position:static; color:#000; box-shadow:none; border-bottom:2px solid #000; }
   .tab { display:none !important; }
-  #tab-day { display:block !important; padding:0; }
   #tab-month { display:block !important; padding:0; }
   #tab-month::before { content:''; display:none; }
   .y-head p, .y-head h2 { color:#000 !important; }
   #tab-month input { border:none; background:none; margin:0; padding:0 4px; font-weight:bold; display:inline-block; width:auto; }
-  #tab-day::before { content:'ورقة استهلاك المطعم المدرسي'; display:block; font-weight:bold; font-size:1.2em; text-align:center; margin-bottom:10px; }
   .total-bar { background:#eee; color:#000; border:1.5px solid #000; }
   table, th, td { border:1px solid #000; }
   th { background:#ddd !important; color:#000 !important; }
-  tr.low td { background:#fff; color:#000; }
+  tr.low td, tr.expwarn td { background:#fff; color:#000; }
   .meal-box { border:1.5px solid #000; background:#fff; }
   .meal-box h3 { color:#000; }
   .sign-area { display:flex !important; justify-content:space-between; margin-top:50px; page-break-inside:avoid; }
@@ -69,11 +73,11 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
   .sign-area .line { border-top:1.5px solid #000; margin-top:45px; }
 }
 
-#printSheet { display:none; }
+#printSheet, #printInvoice { display:none; }
 .ps-top { display:flex; justify-content:space-between; font-weight:bold; font-size:.95em; }
 .ps-title { text-align:center; margin:14px 0; font-size:1.2em; text-decoration:underline; }
 .ps-tbl { width:100%; border-collapse:collapse; margin-bottom:14px; }
-.ps-tbl th, .ps-tbl td { border:1.5px solid #000; padding:7px 6px; text-align:center; font-size:.95em; }
+.ps-tbl th, .ps-tbl td { border:1.5px solid #000; padding:5px 4px; text-align:center; font-size:.78em; }
 .ps-tbl th { background:#eee; }
 .ps-side { border-collapse:collapse; margin-bottom:14px; width:280px; }
 .ps-side td { border:1.5px solid #000; padding:6px 10px; font-weight:bold; font-size:.9em; }
@@ -89,7 +93,8 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
   body { background:#fff; padding-bottom:0; }
   body.print-day .tab, body.print-day nav, body.print-day header { display:none !important; }
   body.print-day #printSheet { display:block !important; padding:0; }
-  .tab.print-active { display:block !important; padding:0; }
+  body.print-inv .tab, body.print-inv nav, body.print-inv header { display:none !important; }
+  body.print-inv #printInvoice { display:block !important; padding:0; }
 }
 </style>
 </head>
@@ -107,29 +112,33 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
     </div>
   </div>
   <div class="card">
-    <h3>➕ تسجيل مادة</h3>
+    <h3>➖ تسجيل خروج (استهلاك) مادة</h3>
     <label>المكوّن (السعر = المرجعي تلقائياً)</label>
     <select id="dItem"></select>
     <div class="row-flex">
-      <div><label>المتوفر بداية اليوم</label><input type="number" id="dAvail" min="0" placeholder="0"></div>
-      <div><label>المدخول (شراء)</label><input type="number" id="dIn" min="0" placeholder="0"></div>
-    </div>
-    <div class="row-flex">
-      <div><label>المستهلَك (المخرجات)</label><input type="number" id="dOut" min="0" placeholder="0"></div>
+      <div><label>الكمية المستهلكة</label><input type="number" id="dOut" min="0" placeholder="0"></div>
       <div><label>الملاحظات</label><input type="text" id="dNote" placeholder="اختياري"></div>
     </div>
-    <button class="btn" onclick="addEntry()">💾 حفظ السطر</button>
+    <button class="btn" onclick="addEntry()">💾 تسجيل الخروج</button>
   </div>
 
-  <div class="total-bar" id="dayTotal">مجموع الاستهلاك: 0 دج</div>
+  <div class="total-bar" id="dayTotal">مجموع قيمة الاستهلاك: 0 دج</div>
+  <h3 style="padding:0 4px">📊 نظرة عامة على مخزون اليوم</h3>
   <div class="scroll"><table id="dayTable"><thead><tr>
-    <th>المكوّن</th><th>الوحدة</th><th>المتوفر</th><th>المدخول</th><th>المجموع</th><th>المخرجات</th><th>الباقي</th><th>السعر المرجعي</th><th>المبلغ</th><th></th>
+    <th>المادة</th><th>الوحدة</th><th>المخزون السابق</th><th>مدخول اليوم</th><th>المجموع</th><th>مخرجات اليوم</th><th>الباقي</th><th>قيمة المخزون</th>
   </tr></thead><tbody></tbody></table></div>
-  <p class="empty small" id="dayEmpty">لا توجد حركات لهذا اليوم</p>
+
+  <h3 style="padding:8px 4px 0">📋 حركات الخروج المسجّلة اليوم</h3>
+  <div class="scroll"><table id="dayEntries"><thead><tr>
+    <th>المادة</th><th>الكمية</th><th>السعر</th><th>القيمة</th><th>ملاحظة</th><th></th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="empty small" id="dayEntriesEmpty">لا توجد حركات خروج لهذا اليوم</p>
 
   <div class="meal-box">
     <h3>🍲 الوجبة المقدّمة</h3>
+    <button class="btn sec" onclick="applyWeeklyToDay()" style="margin-bottom:10px">📆 تحميل من القالب الأسبوعي</button>
     <div class="row-flex">
+      <div><label>الفطور</label><input type="text" id="mBreak" placeholder="اختياري"></div>
       <div><label>الغداء</label><input type="text" id="mLunch" placeholder="مثال: لوبيا + جبن"></div>
       <div><label>العشاء</label><input type="text" id="mDinner" placeholder="مثال: شخشوخة"></div>
     </div>
@@ -144,16 +153,15 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
     <button class="btn sec" onclick="saveMeta()">💾 حفظ بيانات الورقة</button>
   </div>
 
-  <br><button class="btn sec" onclick="window.print()">🖨️ طباعة الورقة</button>
-
-  <div class="sign-area">
-    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
-    <div class="sig"><p>المدير</p><p class="line"></p></div>
-  </div>
+  <br><button class="btn sec" onclick="printDaySheet()">🖨️ طباعة ورقة الاستهلاك</button>
 </div>
 
 <!-- ═══ تبويب المواد ═══ -->
 <div class="tab" id="tab-items">
+  <div class="card" id="expiryCard" style="display:none">
+    <h3>⏰ تنبيهات الصلاحية (خلال 14 يوم)</h3>
+    <div id="expiryList"></div>
+  </div>
   <div class="card">
     <h3 id="itemFormTitle">➕ إضافة / تعديل مادة</h3>
     <input type="hidden" id="iEdit">
@@ -169,8 +177,13 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
       <div><label>السعر المرجعي (دج)</label><input type="number" id="iPref" min="0" placeholder="0"></div>
       <div><label>السعر الأقصى (دج)</label><input type="number" id="iPmax" min="0" placeholder="0"></div>
     </div>
+    <label>الحد الأدنى للمخزون (للتنبيه)</label>
+    <input type="number" id="iMin" min="0" placeholder="0">
+    <h3 style="margin-top:6px">📦 المخزون الافتتاحي (يُسجَّل مرة واحدة)</h3>
     <div class="row-flex">
-      <div><label>الحد الأدنى للمخزون</label><input type="number" id="iMin" min="0" placeholder="0"></div>
+      <div><label>الكمية الافتتاحية</label><input type="number" id="iOpenQty" min="0" placeholder="0"></div>
+      <div><label>سعر الشراء</label><input type="number" id="iOpenPrice" min="0" placeholder="0"></div>
+      <div><label>تاريخ الصلاحية</label><input type="date" id="iOpenExpiry"></div>
     </div>
     <button class="btn" onclick="saveItem()">💾 حفظ المادة</button>
     <button class="btn sec" onclick="clearItemForm()" style="margin-top:8px">↩️ إلغاء التعديل</button>
@@ -178,7 +191,7 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
   <div class="card">
     <h3>📦 قائمة المواد والأسعار</h3>
     <div class="scroll"><table id="itemTable"><thead><tr>
-      <th>الرقم</th><th>المادة</th><th>الفئة</th><th>الوحدة</th><th>أدنى</th><th>مرجعي</th><th>أقصى</th><th>الممون</th><th></th>
+      <th>الرقم</th><th>المادة</th><th>الفئة</th><th>الوحدة</th><th>مرجعي</th><th>افتتاحي</th><th>الممون</th><th></th>
     </tr></thead><tbody></tbody></table></div>
     <p class="empty small" id="itemEmpty">لا توجد مواد</p>
   </div>
@@ -211,18 +224,52 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
   <div id="supList"></div>
 </div>
 
-<!-- ═══ تبويب المدخولات ═══ -->
-<div class="tab" id="tab-in">
+<!-- ═══ تبويب المشتريات ═══ -->
+<div class="tab" id="tab-pur">
   <div class="card">
-    <h3>📥 حساب المدخولات لكل مادة</h3>
-    <table id="inTable"><thead><tr><th>المادة</th><th>إجمالي المدخول</th><th>الوحدة</th><th>المرجعي</th><th>القيمة</th></tr></thead><tbody></tbody></table>
-    <p class="empty small" id="inEmpty">لا توجد مدخولات بعد</p>
-    <div class="total-bar" id="inTotal" style="margin-top:10px">مجموع قيمة المدخولات: 0 دج</div>
+    <h3>🧾 تسجيل عملية شراء (وصل استلام)</h3>
+    <div class="row-flex">
+      <div><label>المورد</label><select id="pSupplier"></select></div>
+      <div><label>التاريخ</label><input type="date" id="pDate"></div>
+    </div>
+    <label>رقم وصل الاستلام</label>
+    <input type="text" id="pReceipt" placeholder="مثال: 58/2026">
+    <label>المادة</label>
+    <select id="pItem" onchange="pPrice.value=(items[pItem.value]||{}).pref||0"></select>
+    <div class="row-flex">
+      <div><label>الكمية</label><input type="number" id="pQty" min="0" placeholder="0"></div>
+      <div><label>سعر الشراء</label><input type="number" id="pPrice" min="0" placeholder="0"></div>
+      <div><label>تاريخ الصلاحية</label><input type="date" id="pExpiry"></div>
+    </div>
+    <button class="btn" onclick="addPurchase()">➕ إضافة المادة للوصل</button>
   </div>
   <div class="card">
-    <h3>📋 تفصيل المدخولات اليومية</h3>
-    <table id="inDetail"><thead><tr><th>التاريخ</th><th>المادة</th><th>الكمية</th><th>القيمة</th></tr></thead><tbody></tbody></table>
-    <p class="empty small" id="inDetailEmpty">لا يوجد تفصيل</p>
+    <h3>📋 عمليات الشراء</h3>
+    <label>تصفية بالشهر</label>
+    <input type="month" id="pMonth" onchange="renderPurchases()">
+    <div id="purchaseGroups"></div>
+    <p class="empty small" id="purchaseGroupsEmpty">لا توجد مشتريات في هذا الشهر</p>
+  </div>
+</div>
+
+<!-- ═══ تبويب البيان الشهري ═══ -->
+<div class="tab" id="tab-month">
+  <div class="card y-head" style="text-align:center">
+    <h3>📄 بيان الاستهلاك الشهري — المطعم المدرسي</h3>
+    <p style="margin:6px 0">الموسم الدراسي: <input type="text" id="ySeason" placeholder="مثال: 2026/2027" style="width:120px;display:inline-block"> —
+    المؤسسة: <input type="text" id="ySchool" placeholder="ثانوية ..." style="width:170px;display:inline-block"></p>
+    <p style="margin:6px 0">الشهر: <input type="month" id="yMonth" style="width:150px;display:inline-block"></p>
+    <button class="btn sec" onclick="renderMonthStatement()" style="width:auto;padding:10px 20px">🔄 تحديث البيان</button>
+  </div>
+  <div class="total-bar" id="yTotal">إجمالي الاستهلاك الشهري: 0 دج</div>
+  <div class="scroll"><table id="yTable"><thead><tr>
+    <th>الرقم</th><th>المادة</th><th>الوحدة</th><th>الرصيد الافتتاحي</th><th>المدخول</th><th>المخرجات</th><th>الرصيد الختامي</th><th>سعر الوحدة</th><th>قيمة الاستهلاك</th><th>قيمة المخزون الختامي</th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="empty small" id="yEmpty">لا توجد بيانات</p>
+  <br><button class="btn sec" onclick="window.print()">🖨️ طباعة البيان</button>
+  <div class="sign-area">
+    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
+    <div class="sig"><p>المدير</p><p class="line"></p></div>
   </div>
 </div>
 
@@ -234,6 +281,12 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
     <p class="empty small" id="monthEmpty">لا يوجد سجل</p>
   </div>
   <div class="card">
+    <h3>📆 قالب قائمة الطعام الأسبوعية</h3>
+    <p class="small" style="margin-bottom:8px">يُستعمل زر "تحميل من القالب الأسبوعي" في تبويب اليوم لتعبئة الوجبة تلقائياً حسب يوم الأسبوع.</p>
+    <div id="weeklyForm"></div>
+    <button class="btn sec" onclick="saveWeekly()">💾 حفظ القالب</button>
+  </div>
+  <div class="card">
     <h3>⚙️ البيانات</h3>
     <button class="btn sec" onclick="exportCSV()">⬇️ تصدير السجل (CSV)</button><br><br>
     <button class="btn danger" onclick="wipeAll()">🗑️ مسح جميع البيانات</button>
@@ -241,108 +294,113 @@ h3 { margin-bottom:10px; color:#1F4E78; font-size:1em; }
   </div>
 </div>
 
-
-<!-- ═══ تبويب البيان الشهري ═══ -->
-<div class="tab" id="tab-month">
-  <div class="card y-head" style="text-align:center">
-    <h3>📄 بيان الاستهلاك الشهري — المطعم المدرسي</h3>
-    <p style="margin:6px 0">الموسم الدراسي: <input type="text" id="ySeason" placeholder="مثال: 2025/2026" style="width:120px;display:inline-block"> —
-    المؤسسة: <input type="text" id="ySchool" placeholder="ثانوية ..." style="width:170px;display:inline-block"></p>
-    <p style="margin:6px 0">الشهر: <input type="month" id="yMonth" style="width:150px;display:inline-block"></p>
-    <button class="btn sec" onclick="renderMonthStatement()" style="width:auto;padding:10px 20px">🔄 تحديث البيان</button>
-  </div>
-  <div class="total-bar" id="yTotal">إجمالي الاستهلاك الشهري: 0 دج</div>
-  <div class="scroll"><table id="yTable"><thead><tr>
-    <th>الرقم</th><th>المادة</th><th>الوحدة</th><th>الرصيد الافتتاحي</th><th>المدخول</th><th>المخرجات</th><th>الرصيد الختامي</th><th>سعر الوحدة</th><th>المبلغ (دج)</th>
-  </tr></thead><tbody></tbody></table></div>
-  <p class="empty small" id="yEmpty">لا توجد حركات في هذا الشهر</p>
-  <br><button class="btn sec" onclick="window.print()">🖨️ طباعة البيان</button>
-  <div class="sign-area">
-    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
-    <div class="sig"><p>المدير</p><p class="line"></p></div>
-  </div>
-</div>
-
 <nav>
   <button class="active" onclick="showTab('day',this)">📝 اليوم</button>
   <button onclick="showTab('items',this)">📦 المواد</button>
   <button onclick="showTab('sup',this)">🚚 الممونون</button>
-  <button onclick="showTab('in',this)">📥 المدخولات</button>
+  <button onclick="showTab('pur',this)">🧾 المشتريات</button>
   <button onclick="showTab('month',this)">📄 البيان</button>
   <button onclick="showTab('history',this)">📊 السجل</button>
 </nav>
 
 <script>
-const K='v3_';
-let items  = JSON.parse(localStorage.getItem(K+'items')||'null');
-let entries= JSON.parse(localStorage.getItem(K+'entries')||'[]');
-let sups   = JSON.parse(localStorage.getItem(K+'sups')||'null');
-let meta   = JSON.parse(localStorage.getItem(K+'meta')||'{}');
+const K='v4_', KOLD='v3_';
+const load=(k,def)=>{ const v=JSON.parse(localStorage.getItem(K+k)||'null'); return v!==null?v:def; };
 
-/* ── بيانات أولية من عروض الأسعار (قابلة للتعديل) ── */
+let items = load('items', null);
+let sups  = load('sups', null);
+let purchases = load('purchases', null);
+let entries = load('entries', null);
+let meta = load('meta', null);
+
+/* ترحيل تلقائي من النسخة القديمة v3 إذا وُجدت */
+(function migrate(){
+  const oldItems = JSON.parse(localStorage.getItem(KOLD+'items')||'null');
+  const oldEntries = JSON.parse(localStorage.getItem(KOLD+'entries')||'null');
+  const oldSups = JSON.parse(localStorage.getItem(KOLD+'sups')||'null');
+  const oldMeta = JSON.parse(localStorage.getItem(KOLD+'meta')||'null');
+  if(!sups && oldSups) sups = oldSups;
+  if(!items && oldItems) items = oldItems.map(it=>({...it, openQty:0, openPrice:it.pref||0, openExpiry:''}));
+  if(!meta && oldMeta) meta = oldMeta;
+  if(!purchases){
+    purchases = [];
+    if(oldEntries) oldEntries.forEach(e=>{ if(e.inq>0) purchases.push({date:e.date, supplier:'', receiptNo:'ترحيل من النسخة السابقة', item:e.item, qty:+e.inq, price:+e.price||0, expiry:''}); });
+  }
+  if(!entries){
+    entries = [];
+    if(oldEntries) oldEntries.forEach(e=>{ if(e.out>0) entries.push({date:e.date, item:e.item, out:+e.out, price:+e.price||0, note:e.note||''}); });
+  }
+})();
+
+/* ── بيانات أولية افتراضية (قابلة للتعديل) ── */
 if(!sups){
   sups=[
    {name:'التعاونية الفلاحية بالتحرش للتموين المدرسي', mgr:'', addr:'',
     rc:'36/00-15108819+', nif:'299443488153239', rib:'0015500012667/72', phone:'06629477141',
-    note:'الممون المعتمد للحوم الحمراء والبيضاء — رقم المادة الجبائية 51'},
+    note:'الممون المعتمد للحوم الحمراء والبيضاء'},
    {name:'التعاونية الفلاحية عين قدير (بعين ولد)', mgr:'محمد الطاهر', addr:'بعين ولد - العيون',
     rc:'', nif:'', rib:'', phone:'06629477141',
-    note:'الممون المعتمد للخضر والفواكه — نسخة مُرسلة إلى نيابة التربية'}
+    note:'الممون المعتمد للخضر والفواكه'}
   ];
 }
 if(!items){
   const L=sups[0].name, V=sups[1].name;
   items=[
-   {name:'لحم بقري هبرة',cat:'لحوم حمراء',unit:'كغ',pmin:1800,pref:2600,pmax:2600,min:0,sup:L},
-   {name:'لحم خروف',cat:'لحوم حمراء',unit:'كغ',pmin:2000,pref:2800,pmax:2800,min:0,sup:L},
-   {name:'لحم بقري بالعظم',cat:'لحوم حمراء',unit:'كغ',pmin:1400,pref:2000,pmax:2000,min:0,sup:L},
-   {name:'لحم الدجاج',cat:'دجاج',unit:'كغ',pmin:250,pref:500,pmax:550,min:0,sup:L},
-   {name:'سكالوب داند',cat:'لحوم بيضاء',unit:'كغ',pmin:800,pref:1200,pmax:1200,min:0,sup:L},
-   {name:'سكالوب دجاج',cat:'لحوم بيضاء',unit:'كغ',pmin:600,pref:1100,pmax:1100,min:0,sup:L},
-   {name:'بصل',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:80,pmax:80,min:0,sup:V},
-   {name:'ثوم',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:400,pmax:400,min:0,sup:V},
-   {name:'موز (بنان)',cat:'خضر وفواكه',unit:'كغ',pmin:250,pref:450,pmax:450,min:0,sup:V},
-   {name:'عنب أصفر',cat:'خضر وفواكه',unit:'كغ',pmin:150,pref:250,pmax:250,min:0,sup:V},
-   {name:'عنب أحمر',cat:'خضر وفواكه',unit:'كغ',pmin:150,pref:250,pmax:250,min:0,sup:V},
-   {name:'تفاح أصفر',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:400,pmax:400,min:0,sup:V},
-   {name:'تفاح أحمر',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:400,pmax:400,min:0,sup:V},
-   {name:'برتقال طومسون',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:250,pmax:250,min:0,sup:V},
-   {name:'برتقال مندرين',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:250,pmax:250,min:0,sup:V},
-   {name:'سلطة خضراء',cat:'خضر وفواكه',unit:'كغ',pmin:70,pref:150,pmax:150,min:0,sup:V},
-   {name:'خيار',cat:'خضر وفواكه',unit:'كغ',pmin:50,pref:150,pmax:150,min:0,sup:V},
-   {name:'طماطم حب حمراء',cat:'خضر وفواكه',unit:'كغ',pmin:50,pref:150,pmax:150,min:0,sup:V},
-   {name:'جزر',cat:'خضر وفواكه',unit:'كغ',pmin:70,pref:120,pmax:120,min:0,sup:V},
-   {name:'بطاطا',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:90,pmax:90,min:0,sup:V},
-   {name:'فلفل حلو',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:120,pmax:120,min:0,sup:V},
-   {name:'فلفل حار',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:120,pmax:120,min:0,sup:V},
-   {name:'جلبانة خضراء',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:200,pmax:200,min:0,sup:V},
-   {name:'لوبيا خضراء',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:200,pmax:200,min:0,sup:V},
-   {name:'باذنجان',cat:'خضر وفواكه',unit:'كغ',pmin:30,pref:50,pmax:50,min:0,sup:V},
-   {name:'الكرنب',cat:'خضر وفواكه',unit:'كغ',pmin:30,pref:80,pmax:80,min:0,sup:V},
-   {name:'إجاص',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:350,pmax:350,min:0,sup:V},
-   {name:'ملفوف أحمر',cat:'خضر وفواكه',unit:'كغ',pmin:300,pref:450,pmax:450,min:0,sup:V},
-   {name:'دلاح',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:60,pmax:60,min:0,sup:V},
-   {name:'بطيخ',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:80,pmax:80,min:0,sup:V},
-   {name:'شمندر عادي',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:350,pmax:350,min:0,sup:V},
-   {name:'خوخ (بمطيفة)',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:350,pmax:350,min:0,sup:V},
-   {name:'خوخ (بمقاش)',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:350,pmax:350,min:0,sup:V},
-   {name:'فراولة',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:300,pmax:300,min:0,sup:V},
-   {name:'ليمون',cat:'خضر وفواكه',unit:'كغ',pmin:100,pref:200,pmax:200,min:0,sup:V},
-   {name:'مشمش',cat:'خضر وفواكه',unit:'كغ',pmin:200,pref:400,pmax:400,min:0,sup:V}
+   {name:'لحم بقري هبرة',cat:'لحوم حمراء',unit:'كغ',pmin:1800,pref:2600,pmax:2600,min:0,sup:L,openQty:0,openPrice:2600,openExpiry:''},
+   {name:'لحم خروف',cat:'لحوم حمراء',unit:'كغ',pmin:2000,pref:2800,pmax:2800,min:0,sup:L,openQty:0,openPrice:2800,openExpiry:''},
+   {name:'لحم الدجاج',cat:'دجاج',unit:'كغ',pmin:250,pref:500,pmax:550,min:0,sup:L,openQty:0,openPrice:500,openExpiry:''},
+   {name:'بصل',cat:'خضر وفواكه',unit:'كغ',pmin:20,pref:80,pmax:80,min:0,sup:V,openQty:0,openPrice:80,openExpiry:''},
+   {name:'طماطم حب حمراء',cat:'خضر وفواكه',unit:'كغ',pmin:50,pref:150,pmax:150,min:0,sup:V,openQty:0,openPrice:150,openExpiry:''},
+   {name:'بطاطا',cat:'خضر وفواكه',unit:'كغ',pmin:40,pref:90,pmax:90,min:0,sup:V,openQty:0,openPrice:90,openExpiry:''}
   ];
 }
+items.forEach(it=>{ if(it.openQty===undefined) it.openQty=0; if(it.openPrice===undefined) it.openPrice=it.pref||0; if(it.openExpiry===undefined) it.openExpiry=''; });
+
 const save = ()=>{ localStorage.setItem(K+'items',JSON.stringify(items));
   localStorage.setItem(K+'entries',JSON.stringify(entries));
   localStorage.setItem(K+'sups',JSON.stringify(sups));
-  localStorage.setItem(K+'meta',JSON.stringify(meta)); };
-const fmt = n => (+n).toLocaleString('ar-DZ');
+  localStorage.setItem(K+'purchases',JSON.stringify(purchases));
+  localStorage.setItem(K+'meta',JSON.stringify(meta||{})); };
+const fmt = n => (+n||0).toLocaleString('ar-DZ');
 
 function showTab(t,btn){
   document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(e=>e.classList.remove('active'));
   document.getElementById('tab-'+t).classList.add('active'); btn.classList.add('active');
-  if(t==='in') renderInputs();
   if(t==='sup') renderSups();
+  if(t==='pur') renderPurchases();
+  if(t==='items') renderItems();
+  if(t==='month') renderMonthStatement();
+  if(t==='history'){ renderMonths(); renderWeeklyForm(); }
+}
+
+/* ══════ سجل المخزون (Ledger) ══════ */
+function sumQty(arr){ return arr.reduce((s,x)=>s+(+x.qty||0),0); }
+function purchQtyBefore(name,date){ return sumQty(purchases.filter(p=>p.item===name && p.date<date)); }
+function purchQtyOn(name,date){ return sumQty(purchases.filter(p=>p.item===name && p.date===date)); }
+function consQtyBefore(name,date){ return entries.filter(e=>e.item===name && e.date<date).reduce((s,e)=>s+(+e.out||0),0); }
+function consQtyOn(name,date){ return entries.filter(e=>e.item===name && e.date===date).reduce((s,e)=>s+(+e.out||0),0); }
+function prevBalance(it,date){ return (+it.openQty||0) + purchQtyBefore(it.name,date) - consQtyBefore(it.name,date); }
+function ledgerRow(it,date){
+  const prev=prevBalance(it,date), inn=purchQtyOn(it.name,date), out=consQtyOn(it.name,date);
+  const tot=prev+inn, rem=tot-out, val=rem*(+it.pref||0);
+  return {prev,inn,tot,out,rem,val};
+}
+function monthRange(m){ const [y,mo]=m.split('-').map(Number); const start=m+'-01'; const last=new Date(y,mo,0).getDate(); const end=m+'-'+String(last).padStart(2,'0'); return {start,end}; }
+function ledgerMonth(it,m){
+  const {start,end}=monthRange(m);
+  const open = prevBalance(it,start);
+  const inn = sumQty(purchases.filter(p=>p.item===it.name && p.date>=start && p.date<=end));
+  const out = entries.filter(e=>e.item===it.name && e.date>=start && e.date<=end).reduce((s,e)=>s+(+e.out||0),0);
+  const close = open+inn-out;
+  return {open,inn,out,close,val:close*(+it.pref||0),consVal:out*(+it.pref||0)};
+}
+function nearestExpiry(it){
+  const today=new Date().toISOString().slice(0,10);
+  const dates=[];
+  if(it.openExpiry) dates.push(it.openExpiry);
+  purchases.filter(p=>p.item===it.name && p.expiry).forEach(p=>dates.push(p.expiry));
+  return dates.filter(d=>d>=today).sort()[0]||null;
 }
 
 /* ── الممونون ── */
@@ -373,58 +431,78 @@ function renderSups(){
     <p>${items.filter(it=>it.sup===s.name).map(it=>`<span class="badge">${it.name}</span>`).join('')}</p>
   </div>`).join('') || '<p class="empty">لا يوجد ممونون</p>';
 }
-function renderSupSelect(){ iSup.innerHTML = sups.map((s,i)=>`<option value="${s.name}">${s.name}</option>`).join(''); }
+function renderSupSelect(){
+  const opts = sups.map((s,i)=>`<option value="${s.name}">${s.name}</option>`).join('');
+  iSup.innerHTML = opts; pSupplier.innerHTML = opts;
+}
 
 /* ── المواد ── */
 function saveItem(){
   const n=iName.value.trim(); if(!n) return alert('أدخل اسم المادة');
   const d={name:n, cat:iCat.value.trim()||'عام', unit:iUnit.value.trim()||'كغ',
     pmin:+iPmin.value||0, pref:+iPref.value||0, pmax:+iPmax.value||0,
-    min:+iMin.value||0, sup:iSup.value};
+    min:+iMin.value||0, sup:iSup.value,
+    openQty:+iOpenQty.value||0, openPrice:+iOpenPrice.value||(+iPref.value||0), openExpiry:iOpenExpiry.value||''};
   if(iEdit.value!=='') items[+iEdit.value]=d; else items.push(d);
-  clearItemForm(); save(); renderItems(); renderSelect(); renderInputs();
+  clearItemForm(); save(); renderItems(); renderSelects();
 }
 function editItem(i){ const it=items[i]; iEdit.value=i; iName.value=it.name; iCat.value=it.cat; iUnit.value=it.unit;
   iPmin.value=it.pmin; iPref.value=it.pref; iPmax.value=it.pmax; iMin.value=it.min; iSup.value=it.sup;
+  iOpenQty.value=it.openQty||''; iOpenPrice.value=it.openPrice||''; iOpenExpiry.value=it.openExpiry||'';
   itemFormTitle.textContent='✏️ تعديل مادة'; window.scrollTo(0,0); }
-function delItem(i){ if(confirm('حذف المادة؟')){ items.splice(i,1); save(); renderItems(); renderSelect(); renderInputs(); } }
-function clearItemForm(){ iEdit.value=''; ['iName','iCat','iUnit','iPmin','iPref','iPmax','iMin'].forEach(id=>document.getElementById(id).value='');
+function delItem(i){ if(confirm('حذف المادة؟')){ items.splice(i,1); save(); renderItems(); renderSelects(); } }
+function clearItemForm(){ iEdit.value=''; ['iName','iCat','iUnit','iPmin','iPref','iPmax','iMin','iOpenQty','iOpenPrice','iOpenExpiry'].forEach(id=>document.getElementById(id).value='');
   itemFormTitle.textContent='➕ إضافة / تعديل مادة'; }
-function renderSelect(){ dItem.innerHTML = items.map((it,i)=>`<option value="${i}">${it.name} (${it.unit}) — ${fmt(it.pref)} دج</option>`).join(''); }
+function renderSelects(){
+  dItem.innerHTML = items.map((it,i)=>`<option value="${i}">${it.name} (${it.unit}) — ${fmt(it.pref)} دج</option>`).join('');
+  pItem.innerHTML = items.map((it,i)=>`<option value="${i}">${it.name} (${it.unit})</option>`).join('');
+}
 function renderItems(){
   itemTable.querySelector('tbody').innerHTML = items.map((it,i)=>
     `<tr><td>${i+1}</td><td style="text-align:right">${it.name}</td><td>${it.cat}</td><td>${it.unit}</td>
-     <td>${fmt(it.pmin)}</td><td><b>${fmt(it.pref)}</b></td><td>${fmt(it.pmax)}</td>
+     <td><b>${fmt(it.pref)}</b></td><td>${fmt(it.openQty)}</td>
      <td style="font-size:.7em">${it.sup||'—'}</td>
      <td><button onclick="editItem(${i})" style="border:none;background:none">✏️</button>
      <button onclick="delItem(${i})" style="border:none;background:none;color:#c0392b">✖</button></td></tr>`).join('');
   itemEmpty.style.display = items.length?'none':'block';
+  renderExpiryAlerts();
+}
+function renderExpiryAlerts(){
+  const rows = items.map(it=>({it,d:nearestExpiry(it)})).filter(x=>x.d);
+  rows.sort((a,b)=>a.d<b.d?-1:1);
+  if(rows.length){
+    expiryCard.style.display='block';
+    expiryList.innerHTML = rows.map(x=>`<span class="badge-warn">${x.it.name} — ${x.d}</span>`).join('');
+  } else expiryCard.style.display='none';
 }
 
-/* ── حركات اليوم ── */
+/* ── اليوم (الاستهلاك) ── */
 function addEntry(){
   const it=items[dItem.value]; if(!it) return alert('أضف مادة أولاً');
   const d=dDate.value; if(!d) return alert('اختر التاريخ');
-  entries.push({date:d, item:it.name, unit:it.unit, avail:+dAvail.value||0, inq:+dIn.value||0,
-                out:+dOut.value||0, price:it.pref, note:dNote.value.trim()});
-  dAvail.value=dIn.value=dOut.value=dNote.value=''; save(); renderDay(); renderMonths(); renderInputs();
+  const out=+dOut.value||0; if(out<=0) return alert('أدخل كمية أكبر من صفر');
+  entries.push({date:d, item:it.name, out, price:it.pref, note:dNote.value.trim()});
+  dOut.value=dNote.value=''; save(); renderDay(); renderMonths();
 }
-function delEntry(i){ if(confirm('حذف هذا السطر؟')){ entries.splice(i,1); save(); renderDay(); renderMonths(); renderInputs(); } }
-function findMin(name){ const it=items.find(x=>x.name===name); return it?it.min:0; }
+function delEntryAt(i){ if(confirm('حذف هذا السطر؟')){ entries.splice(i,1); save(); renderDay(); renderMonths(); } }
 function renderDay(){
   const d=dDate.value;
-  const rows = entries.map((e,i)=>({e,i})).filter(x=>x.e.date===d);
-  dayTable.querySelector('tbody').innerHTML = rows.map(({e,i})=>{
-    const tot=e.avail+e.inq, rem=tot-e.out;
-    return `<tr class="${rem<=findMin(e.item)?'low':''}">
-     <td style="text-align:right">${e.item}</td><td>${e.unit}</td><td>${e.avail}</td><td>${e.inq}</td><td>${tot}</td>
-     <td>${e.out}</td><td>${rem}</td><td>${fmt(e.price)}</td><td>${fmt(e.out*e.price)}</td>
-     <td><button onclick="delEntry(${i})" style="border:none;background:none;color:#c0392b">✖</button></td></tr>`;
+  dayTable.querySelector('tbody').innerHTML = items.map(it=>{
+    const r=ledgerRow(it,d);
+    const cls = r.rem<=(it.min||0) ? 'low' : '';
+    return `<tr class="${cls}"><td style="text-align:right">${it.name}</td><td>${it.unit}</td>
+     <td>${r.prev}</td><td>${r.inn}</td><td>${r.tot}</td><td>${r.out}</td><td>${r.rem}</td><td>${fmt(r.val)}</td></tr>`;
   }).join('');
-  dayTotal.textContent = 'مجموع الاستهلاك: ' + fmt(rows.reduce((s,x)=>s+x.e.out*x.e.price,0)) + ' دج';
-  dayEmpty.style.display = rows.length?'none':'block';
-  const m = meta[d]||{};
-  mLunch.value=m.lunch||''; mDinner.value=m.dinner||'';
+
+  const rows = entries.map((e,i)=>({e,i})).filter(x=>x.e.date===d);
+  dayEntries.querySelector('tbody').innerHTML = rows.map(({e,i})=>
+    `<tr><td style="text-align:right">${e.item}</td><td>${e.out}</td><td>${fmt(e.price)}</td><td>${fmt(e.out*e.price)}</td><td class="small">${e.note||''}</td>
+     <td><button onclick="delEntryAt(${i})" style="border:none;background:none;color:#c0392b">✖</button></td></tr>`).join('');
+  dayEntriesEmpty.style.display = rows.length?'none':'block';
+  dayTotal.textContent = 'مجموع قيمة الاستهلاك: ' + fmt(rows.reduce((s,x)=>s+x.e.out*x.e.price,0)) + ' دج';
+
+  const m = (meta[d])||{};
+  mBreak.value=m.brk||''; mLunch.value=m.lunch||''; mDinner.value=m.dinner||'';
   mStu.value=m.stu||''; mHelp.value=m.help||''; mTeach.value=m.teach||''; mGuest.value=m.guest||'';
   dSchool.value=(meta._settings&&meta._settings.school)||'';
   updateMealInfo();
@@ -437,7 +515,8 @@ function dayTotalOut(){
 }
 function saveMeta(){
   const d=dDate.value; if(!d) return alert('اختر التاريخ');
-  meta[d]={lunch:mLunch.value.trim(), dinner:mDinner.value.trim(),
+  if(!meta) meta={};
+  meta[d]={brk:mBreak.value.trim(), lunch:mLunch.value.trim(), dinner:mDinner.value.trim(),
            stu:+mStu.value||0, help:+mHelp.value||0, teach:+mTeach.value||0, guest:+mGuest.value||0};
   if(!meta._settings) meta._settings={};
   meta._settings.school=dSchool.value.trim();
@@ -448,19 +527,93 @@ function updateMealInfo(){
   mInfo.textContent = c ? `👥 عدد الحاضرين: ${c} — الكلفة الإجمالية: ${fmt(t)} دج — الكلفة الفردية: ${(Math.round(t/c*100)/100).toLocaleString('ar-DZ')} دج` : (t?`الكلفة الإجمالية: ${fmt(t)} دج`:'');
 }
 
-/* ── المدخولات ── */
-function renderInputs(){
-  const agg={};
-  entries.forEach(e=>{ if(e.inq>0){ (agg[e.item]=agg[e.item]||{q:0,v:0,unit:e.unit,price:e.price}); agg[e.item].q+=e.inq; agg[e.item].v+=e.inq*e.price; }});
-  const ks=Object.keys(agg).sort();
-  inTable.querySelector('tbody').innerHTML = ks.map(k=>
-    `<tr><td style="text-align:right">${k}</td><td>${agg[k].q}</td><td>${agg[k].unit}</td><td>${fmt(agg[k].price)}</td><td>${fmt(agg[k].v)}</td></tr>`).join('');
-  inEmpty.style.display = ks.length?'none':'block';
-  inTotal.textContent = 'مجموع قيمة المدخولات: ' + fmt(ks.reduce((s,k)=>s+agg[k].v,0)) + ' دج';
-  const det = entries.map((e,i)=>({e,i})).filter(x=>x.e.inq>0).sort((a,b)=>a.e.date<b.e.date?1:-1);
-  inDetail.querySelector('tbody').innerHTML = det.map(({e})=>
-    `<tr><td>${e.date}</td><td style="text-align:right">${e.item}</td><td>${e.inq}</td><td>${fmt(e.inq*e.price)}</td></tr>`).join('');
-  inDetailEmpty.style.display = det.length?'none':'block';
+/* ── قالب قائمة الطعام الأسبوعية ── */
+const WD=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+function renderWeeklyForm(){
+  const tpl = (meta&&meta._weekly)||{};
+  weeklyForm.innerHTML = WD.map((name,i)=>{
+    const t=tpl[i]||{};
+    return `<div class="wk-row"><span class="wk-day">${name}</span>
+      <input type="text" id="wBreak${i}" placeholder="فطور" value="${t.brk||''}">
+      <input type="text" id="wLunch${i}" placeholder="غداء" value="${t.lunch||''}">
+      <input type="text" id="wDinner${i}" placeholder="عشاء" value="${t.dinner||''}"></div>`;
+  }).join('');
+}
+function saveWeekly(){
+  if(!meta) meta={};
+  meta._weekly={};
+  for(let i=0;i<7;i++){
+    meta._weekly[i]={ brk:document.getElementById('wBreak'+i).value.trim(),
+      lunch:document.getElementById('wLunch'+i).value.trim(), dinner:document.getElementById('wDinner'+i).value.trim() };
+  }
+  save(); alert('✅ تم حفظ القالب الأسبوعي');
+}
+function applyWeeklyToDay(){
+  const d=dDate.value; if(!d) return alert('اختر التاريخ أولاً');
+  const wd = new Date(d+'T00:00:00').getDay();
+  const tpl = meta&&meta._weekly&&meta._weekly[wd];
+  if(!tpl) return alert('لا يوجد قالب محفوظ لهذا اليوم. احفظه من تبويب السجل.');
+  if(!mBreak.value) mBreak.value=tpl.brk||'';
+  if(!mLunch.value) mLunch.value=tpl.lunch||'';
+  if(!mDinner.value) mDinner.value=tpl.dinner||'';
+  updateMealInfo();
+}
+
+/* ── المشتريات ── */
+function addPurchase(){
+  const sup=pSupplier.value, date=pDate.value, receipt=pReceipt.value.trim();
+  const it=items[pItem.value]; if(!it) return alert('اختر مادة');
+  if(!date) return alert('اختر التاريخ');
+  const qty=+pQty.value||0; if(qty<=0) return alert('أدخل كمية أكبر من صفر');
+  const price=+pPrice.value||it.pref;
+  purchases.push({date, supplier:sup, receiptNo:receipt, item:it.name, qty, price, expiry:pExpiry.value||''});
+  pQty.value=''; pExpiry.value='';
+  save(); renderPurchases(); renderDay();
+}
+function purchGroups(){
+  const filterM = pMonth.value;
+  const groups={};
+  purchases.forEach((p,i)=>{
+    if(filterM && p.date.slice(0,7)!==filterM) return;
+    const key=p.date+'|'+p.supplier+'|'+p.receiptNo;
+    (groups[key]=groups[key]||{date:p.date,supplier:p.supplier,receiptNo:p.receiptNo,lines:[],total:0});
+    groups[key].lines.push({...p, idx:i}); groups[key].total += p.qty*p.price;
+  });
+  return groups;
+}
+function renderPurchases(){
+  renderSupSelect(); renderSelects();
+  const groups = purchGroups();
+  const keys = Object.keys(groups).sort((a,b)=>a<b?1:-1);
+  purchaseGroups.innerHTML = keys.map(k=>{
+    const g=groups[k];
+    return `<div class="grp-card">
+      <h3>🧾 ${g.date} — ${g.supplier||'بدون مورد'} ${g.receiptNo?'(وصل: '+g.receiptNo+')':''}
+      <span style="float:left"><button onclick="printInvoice('${k.replace(/'/g,"\\'")}')" style="border:none;background:none">🖨️</button>
+      <button onclick="delPurchGroup('${k.replace(/'/g,"\\'")}')" style="border:none;background:none;color:#c0392b">✖</button></span></h3>
+      ${g.lines.map(l=>`<p>${l.item} — ${l.qty} × ${fmt(l.price)} = ${fmt(l.qty*l.price)} دج${l.expiry?' (صلاحية: '+l.expiry+')':''}</p>`).join('')}
+      <p><b>المجموع: ${fmt(g.total)} دج</b></p>
+    </div>`;
+  }).join('');
+  purchaseGroupsEmpty.style.display = keys.length?'none':'block';
+}
+function delPurchGroup(key){
+  if(!confirm('حذف كل مواد هذا الوصل؟')) return;
+  const [date,supplier,receiptNo]=key.split('|');
+  purchases = purchases.filter(p=>!(p.date===date && p.supplier===supplier && p.receiptNo===receiptNo));
+  save(); renderPurchases(); renderDay();
+}
+function printInvoice(key){
+  const groups=purchGroups(); const g=groups[key]; if(!g) return;
+  const s = sups.find(x=>x.name===g.supplier)||{};
+  ivSchool.textContent = (meta._settings&&meta._settings.school)||'ثانوية ................';
+  ivDate.textContent = g.date; ivReceipt.textContent = g.receiptNo||'—';
+  ivSupplier.textContent = g.supplier||'—';
+  ivSupInfo.textContent = [s.rc?('س.ت: '+s.rc):'', s.nif?('ن.ج: '+s.nif):'', s.phone?('هاتف: '+s.phone):''].filter(Boolean).join(' — ');
+  ivRows.innerHTML = g.lines.map(l=>`<tr><td style="text-align:right">${l.item}</td><td>${l.qty}</td><td>${fmt(l.price)}</td><td>${fmt(l.qty*l.price)}</td></tr>`).join('');
+  ivTotal.textContent = fmt(g.total);
+  document.body.classList.add('print-inv');
+  window.print();
 }
 
 /* ── السجل ── */
@@ -473,96 +626,75 @@ function renderMonths(){
   monthEmpty.style.display = ks.length?'none':'block';
 }
 
-
 /* ── البيان الشهري ── */
 function renderMonthStatement(){
-  const m = yMonth.value;
-  const rows = entries.filter(e=>e.date.slice(0,7)===m).sort((a,b)=>a.date<b.date?-1:1);
-  const agg = {};
-  rows.forEach(e=>{
-    if(!agg[e.item]) agg[e.item] = {unit:e.unit, open:e.avail, inq:0, out:0, close:e.avail+e.inq-e.out, price:e.price};
-    const a = agg[e.item];
-    a.inq += e.inq; a.out += e.out; a.close = e.avail + a.inq - a.out; a.price = e.price;
-  });
-  const ks = Object.keys(agg);
-  yTable.querySelector('tbody').innerHTML = ks.map((k,i)=>{
-    const a = agg[k];
-    return `<tr><td>${i+1}</td><td style="text-align:right">${k}</td><td>${a.unit}</td>
-      <td>${a.open}</td><td>${a.inq}</td><td>${a.out}</td><td>${a.close}</td>
-      <td>${fmt(a.price)}</td><td>${fmt(a.out*a.price)}</td></tr>`;
+  const m = yMonth.value; if(!m) return;
+  yTable.querySelector('tbody').innerHTML = items.map((it,i)=>{
+    const L=ledgerMonth(it,m);
+    return `<tr><td>${i+1}</td><td style="text-align:right">${it.name}</td><td>${it.unit}</td>
+      <td>${L.open}</td><td>${L.inn}</td><td>${L.out}</td><td>${L.close}</td>
+      <td>${fmt(it.pref)}</td><td>${fmt(L.consVal)}</td><td>${fmt(L.val)}</td></tr>`;
   }).join('');
-  yTotal.textContent = 'إجمالي الاستهلاك الشهري: ' + fmt(ks.reduce((s,k)=>s+agg[k].out*agg[k].price,0)) + ' دج';
-  yEmpty.style.display = ks.length?'none':'block';
+  yTotal.textContent = 'إجمالي الاستهلاك الشهري: ' + fmt(items.reduce((s,it)=>s+ledgerMonth(it,m).consVal,0)) + ' دج';
+  yEmpty.style.display = items.length?'none':'block';
 }
-function saveYearSettings(){ meta._settings = {season:ySeason.value, school:ySchool.value}; save(); }
+function saveYearSettings(){ if(!meta) meta={}; meta._settings = {...(meta._settings||{}), season:ySeason.value, school:ySchool.value}; save(); }
 
-/* ── تصدير ── */
+/* ── تصدير ومسح ── */
 function exportCSV(){
-  let csv='\ufeffالتاريخ;المادة;الوحدة;المتوفر;المدخول;المخرجات;الباقي;السعر المرجعي;قيمة الاستهلاك;الوجبة المقررة;داخلي;نصف داخلي;سعر الوجبة\n';
-  entries.forEach(e=>{ const mt=meta[e.date]||{};
-    csv+=`${e.date};${e.item};${e.unit};${e.avail};${e.inq};${e.out};${e.avail+e.inq-e.out};${e.price};${e.out*e.price};${mt.meal||''};${mt.board||''};${mt.half||''};${mt.price||''}\n`; });
+  let csv='\ufeffالتاريخ;المادة;الوحدة;الكمية المستهلكة;السعر المرجعي;قيمة الاستهلاك;الملاحظات\n';
+  entries.forEach(e=>{ csv+=`${e.date};${e.item};${(items.find(i=>i.name===e.item)||{}).unit||''};${e.out};${e.price};${e.out*e.price};${(e.note||'').replace(/;/g,',')}\n`; });
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
   a.download='سجل_استهلاك_المطعم.csv'; a.click();
 }
-function wipeAll(){ if(confirm('سيتم مسح كل البيانات نهائياً! متأكد؟')){ items=[]; entries=[]; sups=[]; meta={}; save(); renderAll(); } }
-function renderAll(){ renderItems(); renderSelect(); renderSups(); renderSupSelect(); renderDay(); renderMonths(); renderInputs(); }
+function wipeAll(){ if(confirm('سيتم مسح كل البيانات نهائياً! متأكد؟')){ items=[]; entries=[]; sups=[]; purchases=[]; meta={}; save(); location.reload(); } }
 
+/* ── طباعة ورقة اليوم ── */
 function buildPrintSheet(){
-  const d=dDate.value, m=meta[d]||{};
+  const d=dDate.value, m=(meta[d])||{};
   psSchool.textContent = (meta._settings&&meta._settings.school)||'ثانوية ................';
   psDate.textContent = d;
-  const agg={};
-  entries.filter(e=>e.date===d).forEach(e=>{
-    if(!agg[e.item]) agg[e.item]={out:0,price:e.price};
-    agg[e.item].out+=e.out; agg[e.item].price=e.price;
-  });
   let tot=0, rowsHtml='';
-  items.forEach(it=>{
-    const a=agg[it.name], out=a?a.out:0, pr=a?a.price:it.pref, amt=out*pr; tot+=amt;
-    rowsHtml+='<tr><td style="text-align:right">'+it.name+'</td><td>'+(out||'')+'</td><td>'+(pr?fmt(pr):'')+'</td><td>'+(amt?fmt(amt):'')+'</td></tr>';
+  items.forEach((it,i)=>{
+    const r=ledgerRow(it,d); tot+=r.out*it.pref;
+    rowsHtml+=`<tr><td>${i+1}</td><td style="text-align:right">${it.name}</td><td>${r.prev}</td><td>${r.inn}</td><td>${r.tot}</td>
+      <td>${r.out||''}</td><td>${r.out?fmt(r.out*it.pref):''}</td><td>${r.rem}</td><td>${fmt(r.val)}</td></tr>`;
   });
-  rowsHtml+='<tr><td style="text-align:right;font-weight:bold">المجمـــــــــــــــــــــــــــــــــــــــــــوع</td><td></td><td></td><td style="font-weight:bold">'+fmt(tot)+'</td></tr>';
   psRows.innerHTML=rowsHtml;
   psTot2.textContent=fmt(tot);
   const c=dayCount();
   psCount.textContent=c||'';
   psAvg.textContent=c?(Math.round(tot/c*100)/100).toLocaleString('ar-DZ'):'';
-  psLunch.textContent=m.lunch||''; psDinner.textContent=m.dinner||'';
+  psBreak.textContent=m.brk||''; psLunch.textContent=m.lunch||''; psDinner.textContent=m.dinner||'';
   psStu.textContent=m.stu||''; psHelp.textContent=m.help||''; psTeach.textContent=m.teach||''; psGuest.textContent=m.guest||'';
   psSum.textContent=c||'';
 }
-window.addEventListener('beforeprint', ()=>{
-  const act = document.querySelector('.tab.active');
-  document.body.classList.remove('print-day');
-  if(act && act.id==='tab-day'){ buildPrintSheet(); document.body.classList.add('print-day'); }
-  else if(act) act.classList.add('print-active');
-});
-window.addEventListener('afterprint', ()=>{
-  document.querySelectorAll('.print-active').forEach(e=>e.classList.remove('print-active'));
-});
+function printDaySheet(){ buildPrintSheet(); document.body.classList.add('print-day'); window.print(); }
+window.addEventListener('afterprint', ()=>{ document.body.classList.remove('print-day'); document.body.classList.remove('print-inv'); });
+
 dDate.value = new Date().toISOString().slice(0,10);
+pDate.value = dDate.value;
 dDate.onchange = renderDay;
 yMonth.value = dDate.value.slice(0,7);
-const _st = meta._settings||{};
+pMonth.value = dDate.value.slice(0,7);
+const _st = (meta&&meta._settings)||{};
 ySeason.value = _st.season||''; ySchool.value = _st.school||'';
 ySeason.onchange = saveYearSettings; ySchool.onchange = saveYearSettings;
-const _origShowTab = showTab;
-showTab = function(t,btn){ _origShowTab(t,btn); if(t==='month') renderMonthStatement(); };
-['mLunch','mDinner','mStu','mHelp','mTeach','mGuest','dSchool'].forEach(id=>{
+['mBreak','mLunch','mDinner','mStu','mHelp','mTeach','mGuest','dSchool'].forEach(id=>{
   document.getElementById(id).oninput=updateMealInfo; });
-const _origRenderDay = renderDay;
-renderDay = function(){ _origRenderDay(); updateMealInfo(); };
-renderAll();
+
+renderSupSelect(); renderSelects(); renderItems(); renderDay(); renderMonths();
 </script>
+
 <div id="printSheet">
   <div class="ps-top">
     <div>الجمهورية الجزائرية الديمقراطية الشعبية<br>وزارة التربية الوطنية</div>
-    <div style="text-align:left">مديرية التربية لولاية الطارف<br><b id="psSchool">ثانوية ................</b></div>
+    <div style="text-align:left">مديرية التربية<br><b id="psSchool">ثانوية ................</b></div>
   </div>
   <h2 class="ps-title">ورقة الاستهلاك ليوم: <span id="psDate"></span></h2>
   <table class="ps-tbl">
-    <thead><tr><th>التعيين</th><th>مخرجات اليوم</th><th>السعر</th><th>المبلغ</th></tr></thead>
+    <thead><tr><th>الرقم</th><th>المادة</th><th>المخزون السابق</th><th>مدخول اليوم</th><th>مجموع المخزون</th><th>مخروج اليوم</th><th>القيمة</th><th>الباقي</th><th>قيمة المخزون</th></tr></thead>
     <tbody id="psRows"></tbody>
   </table>
   <table class="ps-side">
@@ -570,11 +702,12 @@ renderAll();
     <tr><td>عدد الحاضرين</td><td id="psCount"></td></tr>
     <tr><td>الكلفة الفردية</td><td id="psAvg"></td></tr>
   </table>
-  <p class="ps-sec">عدد الحاضرين</p>
+  <p class="ps-sec">الوجبة المقدّمة</p>
   <table class="ps-meal">
-    <thead><tr><th>عشاء</th><th>غداء</th><th>الوجبة المقدّمة</th></tr></thead>
-    <tbody><tr><td id="psDinner"></td><td id="psLunch"></td><td></td></tr></tbody>
+    <thead><tr><th>الفطور</th><th>الغداء</th><th>العشاء</th></tr></thead>
+    <tbody><tr><td id="psBreak"></td><td id="psLunch"></td><td id="psDinner"></td></tr></tbody>
   </table>
+  <p class="ps-sec">عدد الحاضرين</p>
   <table class="ps-att">
     <thead><tr><th>العدد</th><th>الوظيفة</th><th>الاسم واللقب</th></tr></thead>
     <tbody>
@@ -590,6 +723,32 @@ renderAll();
     <div class="sig"><p>المدير</p><p class="line"></p></div>
   </div>
 </div>
+
+<div id="printInvoice">
+  <div class="ps-top">
+    <div>الجمهورية الجزائرية الديمقراطية الشعبية<br>وزارة التربية الوطنية</div>
+    <div style="text-align:left">مديرية التربية<br><b id="ivSchool">ثانوية ................</b></div>
+  </div>
+  <h2 class="ps-title">فاتورة / وصل استلام مواد</h2>
+  <table class="ps-side" style="width:100%">
+    <tr><td>المورد</td><td id="ivSupplier"></td></tr>
+    <tr><td>بيانات المورد</td><td id="ivSupInfo"></td></tr>
+    <tr><td>التاريخ</td><td id="ivDate"></td></tr>
+    <tr><td>رقم الوصل</td><td id="ivReceipt"></td></tr>
+  </table>
+  <table class="ps-tbl">
+    <thead><tr><th>المادة</th><th>الكمية</th><th>سعر الوحدة</th><th>المبلغ</th></tr></thead>
+    <tbody id="ivRows"></tbody>
+  </table>
+  <table class="ps-side">
+    <tr><td>المجموع الإجمالي</td><td id="ivTotal"></td></tr>
+  </table>
+  <div class="ps-sign">
+    <div class="sig"><p>المورد</p><p class="line"></p></div>
+    <div class="sig"><p>المقتصد</p><p class="line"></p></div>
+  </div>
+</div>
+
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
